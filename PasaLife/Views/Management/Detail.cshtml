@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Rəhbərlik";
+    ManagementDetail managementDetail = Model;
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+}
+<div class="page_content total_page">
+    <div class="static_page_header">
+        @if (culture == "az")
+        {
+            <h2>Rəhbərlik</h2>
+
+        }
+        else if (culture == "en")
+        {
+            <h2>Leadership</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>Лидерство</h2>
+            
+        }
+    </div>
+
+    <div class="white_background_content static_page_content">
+        <div class="reports_item" data-anchor="management">
+            <div class="management_item">
+                <div class="image">
+                    <img src="~/images/persons/@managementDetail.Management.Image" alt="">
+                </div>
+                <div class="inner">
+                    @if (culture == "az")
+                    {
+                        <h3>@managementDetail.Management.AzFullName</h3>
+                        <h4>@managementDetail.Management.AzPosition</h4>
+                        <div class="text">
+                            <p>@Html.Raw(managementDetail.AzDescription)</p>
+                        </div>
+                    }
+                    else if (culture == "en")
+                    {
+                        <h3>@managementDetail.Management.RuFullName</h3>
+                        <h4>@managementDetail.Management.RuPosition</h4>
+                        <div class="text">
+                            <p>@Html.Raw(managementDetail.RuDescription)</p>
+                        </div>
+                    }
+                    else if (culture == "ru")
+                    {
+                        <h3>@managementDetail.Management.EnFullName</h3>
+                        <h4>@managementDetail.Management.EnPosition</h4>
+                        <div class="text">
+                            <p>@Html.Raw(managementDetail.EnDescription)</p>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+        @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+
+

@@ -1,0 +1,93 @@
+﻿@model List<Award>
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+    ViewData["Title"] = "Mükafatlar";
+}
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        @if (culture == "az")
+        {
+            <h2>Mükafatlar</h2>
+
+        }
+        else if (culture == "en")
+        {
+            <h2>Awards</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>Награды</h2>
+            
+        }
+        @await Component.InvokeAsync("SecondMenu")
+
+    </div>
+
+    <div class="white_background_content static_page_content">
+        <div class="reports_item">
+            <div class="r_content_grid award_grid">
+                @foreach (Award item in Model)
+                 {
+                <div class="award_item">
+                    <div class="award_image" style="background-image:url(images/@item.Image);"></div>
+                    @if (culture == "az")
+                    {
+                        <div class="award_desc">
+                            <strong>@item.AzTitle</strong>
+                            <p>
+                                @Html.Raw(item.AzDescription)
+                            </p>
+                        </div>
+                    }
+                    else if (culture == "en")
+                    {
+                        <div class="award_desc">
+                            <strong>@item.EnTitle</strong>
+                            <p>
+                                @Html.Raw(item.EnDescription)
+                            </p>
+                        </div>
+
+                    }
+                    else if (culture == "ru")
+                    {
+
+                        <div class="award_desc">
+                            <strong>@item.RuTitle</strong>
+                            <p>
+                                @Html.Raw(item.RuDescription)
+                            </p>
+                        </div>
+                    }
+                </div>
+                    
+                 }
+                
+            </div>
+        </div>
+
+    </div>
+
+    @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

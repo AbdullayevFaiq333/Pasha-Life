@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "";
+}
+
+<div class="page_content total_page">
+		<div class="static_page_header">
+      <h3>Bizə yazın</h3>
+    </div>
+
+
+		<div class="white_background_content static_page_content">
+      <div class="career_sections">
+        <section class="show_me">
+          <div class="two_input">
+            <div class="input">
+              <p>Ad</p>
+              <input type="text" placeholder="Ad">              
+            </div>
+            <div class="input">
+              <p>Soyad</p>
+              <input type="text" placeholder="Soyad">              
+            </div>
+
+          </div>
+          <div class="two_input">
+            <div class="input">
+              <p>Ata adı</p>
+              <input type="text" placeholder="Ata adı">              
+            </div>
+            <div class="input">
+              <p>E-mail</p>
+              <input type="text" placeholder="Vətəndaşlığı">              
+            </div>
+            
+          </div>
+          
+          <div class="two_input">
+            <div class="input">
+              <p>Telefon</p>
+              <div class="phone_inputs">
+                <select>
+                  <option value="070">070</option>
+                  <option value="077">077</option>
+                  <option value="050">050</option>
+                  <option value="055">055</option>
+                </select>
+                <input type="text" placeholder="--- -- --">
+              </div>
+            </div>
+            <div class="input">
+              <p>Müraciətinizin tipi</p>       
+              <select>
+                <option value="Sual">Sual</option>
+                <option value="Təklif">Təklif</option>
+                <option value="Şikayət">Şikayət</option>
+                <option value="Sığorta hadisəsi">Sığorta hadisəsi</option>
+                <option value="Digər">Digər</option>
+              </select>
+            </div>
+          </div>
+          <div class="two_input"> 
+            <div class="input">
+              <p>Mövzu</p>
+              <input type="text" placeholder="Mövzu">              
+            </div>
+            <div class="input">
+              <div class="fule_upload">
+                <p>CV yükləyin (.pdf,.doc,.docx)</p>
+                <label>
+                  <input type="file" required>
+                  <span>Seç</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="input one">
+            <p>Mesaj</p>
+            <textarea name="" id=""></textarea>
+          </div>
+          <div class="button">
+            <a href="#"><span>Növbəti addım</span></a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+		@await Component.InvokeAsync("Footer")
+
+  </div>
+
+	<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+      <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+	<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+      <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+				<source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+				<source src="~/video/eye.webm" type="video/webm">
+			</video>
+    </div>
+  </div>
+

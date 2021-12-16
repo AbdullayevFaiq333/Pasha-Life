@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ITPlatform iTPlatform = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">IT Platforma ətraflı bax</h2>
+            <a asp-controller="onlineservice" asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @iTPlatform.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(iTPlatform.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @iTPlatform.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(iTPlatform.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @iTPlatform.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(iTPlatform.EnDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Url</th>
+                            <td>
+                                @iTPlatform.URL
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/style/img/@iTPlatform.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

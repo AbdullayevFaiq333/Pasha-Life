@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "";
+}
+
+<div class="page_content total_page">
+		<div class="static_page_header">
+      <h3>Online ödəniş</h3>
+    </div>
+
+
+		<div class="white_background_content static_page_content">
+      <div class="career_sections">
+        <section class="show_me">
+
+            <div class="input one">
+              <p>Müştəri tipi</p>
+              <select>
+                <option selected="selected" value="1">Hüquqi şəxslər</option>
+                <option value="2">Kredit götürən şəxslər</option>
+                <option value="3">Fərdi sahibkar</option>
+                <option value="4">Fərdi müştərilər</option>
+              </select>         
+            </div>
+
+
+          <div class="three_input">
+            <div class="input">
+              <p>&nbsp;</p>
+              <select>
+                <option selected="selected" value="C-Lİ">C-Lİ</option>
+                <option value="C-CPA">C-CPA</option>
+              </select>            
+            </div>
+            <div class="input">
+              <p>Müqavilə nömrəsi</p>
+              <input type="text" placeholder="Müqavilə nömrəsi">              
+            </div>
+            <div class="input">
+              <p>&nbsp;</p>
+              <select>
+                <option value="2011">/11</option>
+                <option value="2012">/12</option>
+                <option value="2013">/13</option>
+                <option value="2014">/14</option>
+                <option value="2015">/15</option>
+                <option value="2016">/16</option>
+                <option value="2017">/17</option>
+                <option value="2018">/18</option>
+                <option value="2019">/19</option>
+                <option value="2020">/20</option>
+                <option value="2021">/21</option>
+              </select>          
+            </div>
+          </div>
+
+          <div class="button">
+            <a href="#"><span>Davam et</span></a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+		        @await Component.InvokeAsync("Footer")
+
+  </div>
+
+	<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+      <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+	<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+      <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+				<source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+				<source src="~/video/eye.webm" type="video/webm">
+			</video>
+    </div>
+  </div>
+

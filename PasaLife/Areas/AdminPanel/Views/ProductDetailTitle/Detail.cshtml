@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ProductDetailTitle productDetailTitle = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Məhsul Haqqında Başlıqları Ətraflı</h2>
+            <a asp-controller="Product"  asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Birinci hissə</th>
+                            <td>
+                                @productDetailTitle.AzFirstSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Первая часть</th>
+                            <td>
+                                @productDetailTitle.RuFirstSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">FirstSection</th>
+                            <td>
+                                @productDetailTitle.EnFirstSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">İkinci hissə </th>
+                            <td>
+                                @productDetailTitle.AzSecondSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Вторая часть</th>
+                            <td>
+                                @productDetailTitle.RuSecondSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">SecondSection</th>
+                            <td>
+                                @productDetailTitle.EnSecondSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Üçüncü hissə </th>
+                            <td>
+                                @productDetailTitle.AzThirdSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Третья часть</th>
+                            <td>
+                                @productDetailTitle.RuThirdSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ThirdSection</th>
+                            <td>
+                                @productDetailTitle.EnThirdSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dördüncü hissə </th>
+                            <td>
+                                @productDetailTitle.AzFourthSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Четвертая часть</th>
+                            <td>
+                                @productDetailTitle.RuFourthSection
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">FourthSection</th>
+                            <td>
+                                @productDetailTitle.EnFourthSection
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

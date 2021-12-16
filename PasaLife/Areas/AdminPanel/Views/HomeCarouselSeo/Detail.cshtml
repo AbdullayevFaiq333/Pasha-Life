@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    HomeCarouselSeo homeCarouselSeo = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">HomeCarousel SEO Haqqında ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @homeCarouselSeo.AzSeoTitle
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @homeCarouselSeo.RuSeoTitle
+                            </td>
+                        </tr>                     
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @homeCarouselSeo.EnSeoTitle
+                            </td>
+                        </tr>
+                   
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

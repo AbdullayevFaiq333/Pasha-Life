@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ProductWord productWord = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Məhsul Sözləri Ətraflı</h2>
+            <a asp-controller="Product"  asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Bölmə Başlığı </th>
+                            <td>
+                                @productWord.AzTitle
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Заголовок раздела</th>
+                            <td>
+                                                                @productWord.RuTitle
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Section Title</th>
+                            <td>
+                                                                @productWord.EnTitle
+
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

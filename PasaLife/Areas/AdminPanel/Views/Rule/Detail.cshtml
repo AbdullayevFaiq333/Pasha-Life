@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Rule rule = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Qaydalar Ətraflı</h2>
+            <a asp-controller="InformationCenter" asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @rule.AzName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @rule.RuName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @rule.EnName
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">Pdf</th>
+                            <td>
+                                @rule.FileName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ölçüsü</th>
+                            <td>
+                                @rule.Size
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

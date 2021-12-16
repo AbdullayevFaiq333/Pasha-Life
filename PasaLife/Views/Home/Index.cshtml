@@ -1,0 +1,160 @@
+﻿@model HomeViewModel
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    
+    ViewData["Title"] = "Ana Səhifə";
+
+}
+
+<div class="page_content hp_c_wrap">
+<div class="home_page_self">
+
+    <div class="center_buttons">
+        <div class="button_item b_1">
+            <svg>
+                <clipPath id="b_1_path" clipPathUnits="objectBoundingBox">
+                    <path d="M0.929,0.413 C0.969,0.408,0.998,0.384,0.998,0.356 L1,0.058 C1,0.024,0.957,-0.003,0.908,0 C0.769,0.009,0.631,0.037,0.502,0.088 C0.052,0.265,-0.122,0.647,0.089,0.966 C0.109,0.997,0.164,1,0.207,0.992 L0.582,0.845 C0.618,0.831,0.634,0.802,0.621,0.775 C0.556,0.652,0.628,0.512,0.798,0.445 C0.84,0.428,0.884,0.418,0.929,0.413"></path>
+                </clipPath>
+            </svg>
+            <div class="clipped">
+                <a href="@Model.Left.URL" class="b_content">
+                    @if (culture == "az")
+                    {
+                        <span>@Model.Left.AzTitle</span>
+
+                    }
+                    else if (culture == "en")
+                    {
+                        <span>@Model.Left.EnTitle</span>
+
+
+                    }
+                    else if (culture == "ru")
+                    {
+                        <span>@Model.Left.RuTitle</span>
+
+                    }
+
+                </a>
+            </div>
+            <div class="clipped_shadow"></div>
+        </div>
+
+        <div class="button_item b_2">
+            <svg>
+                <clipPath id="b_2_path" clipPathUnits="objectBoundingBox">
+                    <path d="M0.398,0.68 C0.397,0.713,0.388,0.744,0.372,0.773 C0.358,0.799,0.374,0.828,0.409,0.842 L0.785,0.992 C0.828,1,0.884,0.997,0.905,0.967 C0.965,0.881,0.999,0.785,1,0.683 C1,0.329,0.608,0.035,0.097,0 C0.048,-0.003,0.004,0.023,0.004,0.057 L0,0.352 C0,0.38,0.028,0.405,0.069,0.41 C0.257,0.433,0.399,0.546,0.398,0.68"></path>
+                </clipPath>
+            </svg>
+            <div class="clipped">
+                <a href="@Model.Right.URL" class="b_content">
+                    @if (culture == "az")
+                    {
+                        <span>@Model.Right.AzTitle</span>
+
+                    }
+                    else if (culture == "en")
+                    {
+                        <span>@Model.Right.EnTitle</span>
+
+
+                    }
+                    else if (culture == "ru")
+                    {
+                        <span>@Model.Right.RuTitle</span>
+
+                    }
+                </a>
+            </div>
+            <div class="clipped_shadow"></div>
+        </div>
+
+        <div class="button_item b_3">
+            <svg>
+                <clipPath id="b_3_path" clipPathUnits="objectBoundingBox">
+                    <path d="M0.751,0.014 C0.728,-0.007,0.701,0,0.688,0.036 c-0.043,0.116,-0.11,0.181,-0.187,0.181 c-0.073,0,-0.14,-0.072,-0.187,-0.188 C0.301,0,0.274,-0.014,0.25,0.014 L0.027,0.297 C0,0.333,-0.007,0.405,0.01,0.456 c0.11,0.333,0.291,0.543,0.491,0.543 c0.204,0,0.381,-0.217,0.491,-0.543 c0.017,-0.051,0.01,-0.13,-0.017,-0.159 L0.751,0.014"></path>
+                </clipPath>
+            </svg>
+            <div class="clipped">
+                <a href="@Model.Bottom.URL" class="b_content">
+                    @if (culture == "az")
+                    {
+                        <span>@Model.Bottom.AzTitle</span>
+
+                    }
+                    else if (culture == "en")
+                    {
+                        <span>@Model.Bottom.EnTitle</span>
+
+
+                    }
+                    else if (culture == "ru")
+                    {
+                        <span>@Model.Bottom.RuTitle</span>
+
+                    }
+                </a>
+            </div>
+            <div class="clipped_shadow"></div>
+        </div>
+    </div>
+
+    <div class="main_page_ads">
+        <div class="carousel">
+            @foreach (var homeCarousel in @Model.HomeCarousels)
+           {
+               <div class="ad_item">
+				    <a href="@homeCarousel.URL" class="ad_link">
+				      <div class="ad_image" style="background-image:url(images/@homeCarousel.Image);"></div>
+				      <div class="ad_short_desc">
+                          @if (culture == "az")
+                    {
+                        	<strong>@homeCarousel.AzTitle</strong>
+
+
+                    }
+                    else if (culture == "en")
+                    {
+                            <strong>@homeCarousel.EnTitle</strong>
+
+                    }
+                    else if (culture == "ru")
+                    {
+                        	<strong>@homeCarousel.RuTitle</strong>
+
+
+                    }
+				        <p>@homeCarousel.DateTime.ToString("dd MMMM yyyy")</p>
+				      </div>
+				    </a>
+				  </div>
+           }
+				  
+					
+        </div>
+      </div>
+    
+</div>
+        @await Component.InvokeAsync("Footer")
+</div>
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap home_page">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+      <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+				<source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+				<source src="~/video/eye.webm" type="video/webm">
+			</video>
+    </div>
+  </div>
+
+
+	<canvas class="webgl"></canvas>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+	<script src="~/js/eye.js?v=22"></script>

@@ -1,0 +1,76 @@
+﻿@inject IViewLocalizer Localizer
+@model List<InformationCenter>
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    ViewData["Title"] = "Məlumat mərkəzi";
+}
+
+<div class="page_content total_page">
+    <div class="main_wrap_content">
+        @if (culture == "az")
+        {
+            <h1>Məlumat mərkəzi</h1>
+
+        }
+        else if (culture == "en")
+        {
+            <h1>Information Center</h1>
+
+        }
+        else if (culture == "ru")
+        {
+            <h1>Информационный Центр</h1>
+            
+        }
+        <div class="total_page_grid">
+            @foreach (InformationCenter item in Model)
+            {
+
+
+                <div class="product_item">
+                    <a asp-controller="InformationCenter" asp-action="Detail" asp-route-id="@item.Id" class="product_link">
+                        <div class="product_short_desc">
+                            @if (culture == "az")
+                            {
+                                <strong>@item.AzTitle</strong>
+                                <p>@Html.Raw(item.AzDescription)</p>
+                            }
+                            else if (culture == "ru")
+                            {
+                                <strong>@item.RuTitle</strong>
+                                <p>@Html.Raw(item.RuDescription)</p>
+                            }
+                            else if (culture == "en")
+                            {
+                                <strong>@item.EnDescription</strong>
+                                <p>@Html.Raw(item.EnDescription)</p>
+                            }
+
+                        </div>
+                        <div class="product_image" style="background-image:url(images/@item.Image);"></div>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+        @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

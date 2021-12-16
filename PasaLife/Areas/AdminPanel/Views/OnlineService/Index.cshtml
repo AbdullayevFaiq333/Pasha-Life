@@ -1,0 +1,246 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    List<OnlineService> onlineServices = Model;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Onlayn xidmətlər</h4>
+                <a asp-action="Create" class="btn btn-primary">Yenisini yarat</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Şəkli</th>
+                                <th>Ad</th>
+                                <th>Status</th>
+                                <th class="text-right pr-3">Əməliyyatlar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i<onlineServices.Count;i++)
+                            {
+                                var simple = "simple" + i;
+                                var simpleTarget = "#" + simple;
+
+                                <tr>
+                                    <td>
+                                        <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@onlineServices[i].Image" />
+                                    </td>
+                                    <td>
+                                        @onlineServices[i].AzTitle
+                                    </td>
+                                    <td>
+                                        @if (onlineServices[i].IsDeactive)
+                                        {
+                                            <span class="text-danger">Passiv</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-success">Aktiv </span>
+
+                                        }
+                                    </td>
+                                    <td>
+                                      
+                                            <div class="d-flex justify-content-end">
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@simpleTarget">
+                                                    ItPlatforms
+                                                </a>
+                                            </div>
+                                            <div class="modal fade" id="@simple" tabindex="-1" role="dialog" aria-labelledby="Modal-simple" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Məlumatin Detailində olan ITPlatform</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (onlineServices[i].ITPlatforms.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Az
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Eng
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Ru
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (ITPlatform childİtem in onlineServices[i].ITPlatforms)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.AzTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.EnTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.RuTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="ITPlatform" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="ITPlatform" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="ITPlatform" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="ITPlatform" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="ITPlatform" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="ITPlatform" asp-action="Create" asp-route-onlId="@onlineServices[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                      
+                                        <div class="d-flex justify-content-end mt-2">
+                                            <a asp-action="Detail" asp-route-id="@onlineServices[i].Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                            <a asp-action="Update" asp-route-id="@onlineServices[i].Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                            @if (onlineServices[i].IsDeactive)
+                                            {
+                                                <a asp-action="Activate" asp-route-id="@onlineServices[i].Id" class="btn btn-outline-success">Aktiv et</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="Delete" asp-route-id="@onlineServices[i].Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                             }
+                                                <a asp-action="Remove" asp-route-id="@onlineServices[i].Id" class="btn btn-danger">Sil</a>
+
+                                            </div>
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Css{
+
+    <style>
+
+
+        .effect.update {
+            background-color: #418d4f;
+        }
+
+        .effect {
+            border: none !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            display: inline-block;
+            Description: relative !important;
+            text-decoration: none !important;
+            color: #fff !important;
+            text-transform: capitalize !important;
+            background-color: #685353;
+            font-size: 12px !important;
+            padding: 10px 0px !important;
+            width: 100px !important;
+            border-radius: 26px !important;
+            overflow: hidden !important;
+        }
+
+            .effect.delete {
+                background-color: #a00606;
+            }
+
+            .effect.detail {
+                background-color: #af7a10;
+            }
+
+            .effect.create {
+                background-color: #278dc9;
+            }
+
+            .effect i {
+                Description: absolute !important;
+                font-family: FontAwesome !important;
+                font-size: 12px !important;
+                display: flex !important;
+                align-onlineServices[i]s: center !important;
+                justify-content: center !important;
+                Description: absolute !important;
+                top: 0 !important;
+                right: -30px !important;
+                width: 20px !important;
+                height: 100% !important;
+                background-color: #ffffff3b !important;
+                border-radius: 0px 6px 6px 0px !important;
+                transition: all 0.2s linear 0s !important;
+                text-align: center !important;
+            }
+
+            .effect.effect-2 {
+                transition: all 0.2s linear 0s !important;
+            }
+
+
+                .effect.effect-2:hover {
+                    text-indent: -30px !important;
+                }
+
+                    .effect.effect-2:hover i {
+                        right: 0 !important;
+                        text-indent: 0px !important;
+                    }
+    </style>
+}
+

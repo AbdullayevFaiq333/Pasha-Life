@@ -1,0 +1,97 @@
+﻿
+@{
+    VacancyDetail vacancyDetail =Model;
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+    ViewData["Title"] = "Karyera";
+}
+
+<div class="page_content total_page">
+    @if (culture == "az")
+        {
+            <div class="static_page_header">
+                <div class="news_date">@vacancyDetail.DateTime.ToString("dd MMMM yyyy")</div>
+                <h3>@vacancyDetail.Vacancy.AzTitle</h3>
+               <div class="border_link_white">
+                <a asp-controller="Career" asp-action="CareerForm">Müraciət et</a>
+               </div>
+            </div>
+
+            <div class="white_background_content static_page_content">
+
+               <div class="vacancy_text">
+                 @Html.Raw(vacancyDetail.AzDescription)
+               </div>
+              <div class="apply_block">
+            <h3>Bizimlə birlikdə işləmək istəyirsinizsə</h3>
+            <div class="link"><a asp-controller="Career" asp-action="CareerForm">Müraciət et</a></div>
+        </div>
+    </div>
+
+        }
+        else if (culture == "en")
+        {
+            <div class="static_page_header">
+        <div class="news_date">@vacancyDetail.DateTime</div>
+        <h3>@vacancyDetail.Vacancy.EnTitle</h3>
+        <div class="border_link_white">
+
+            <a asp-controller="Career" asp-action="CareerForm">Apply</a>
+        </div>
+    </div>
+
+    <div class="white_background_content static_page_content">
+
+        <div class="vacancy_text">
+            @Html.Raw(vacancyDetail.EnDescription)
+        </div>
+        <div class="apply_block">
+            <h3>If you want to work with us</h3>
+            <div class="link"><a asp-controller="Career" asp-action="CareerForm">Apply</a></div>
+        </div>
+    </div>
+        }
+        else if (culture == "ru")
+        {
+            <div class="static_page_header">
+        <div class="news_date">@vacancyDetail.DateTime</div>
+        <h3>@vacancyDetail.Vacancy.RuTitle</h3>
+        <div class="border_link_white">
+
+            <a asp-controller="Career" asp-action="CareerForm">Подать заявление</a>
+        </div>
+    </div>
+
+    <div class="white_background_content static_page_content">
+
+        <div class="vacancy_text">
+            @Html.Raw(vacancyDetail.RuDescription)
+        </div>
+        <div class="apply_block">
+            <h3>Если вы хотите работать с нами</h3>
+            <div class="link"><a asp-controller="Career" asp-action="CareerForm">Подать заявление</a></div>
+        </div>
+    </div>
+        }
+    
+
+        @await Component.InvokeAsync("Footer")
+    
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

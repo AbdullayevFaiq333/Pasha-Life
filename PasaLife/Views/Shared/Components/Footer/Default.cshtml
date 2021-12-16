@@ -1,0 +1,67 @@
+﻿
+@model FooterViewModel
+
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    
+}
+
+
+
+<footer>
+    <ul class="social">
+        @foreach(SocialMedia item in Model.SocialMedias)
+        {
+            <li><a href="@item.Url"><img src="style/img/@item.Icon" alt=""></a></li>
+				
+        }
+        
+	</ul>
+    <div class="footer_left">
+        @if (culture == "az")
+        {
+            <p class="copy_right">© 2021 PAŞA Həyat Sığorta ASC</p>
+
+        }
+        else if (culture == "en")
+        {
+            <p class="copy_right">© 2021 PASHA Life Insurance ASC</p>
+
+        }
+        else if (culture == "ru")
+        {
+            <p class="copy_right">© 2021 PASHA Страхование жизни ASC</p>
+            
+        }
+        <ul>
+            @foreach (Footer item in Model.Footers)
+            {
+                if (culture == "az")
+                {
+                    <li><a href="@item.URL" target="_blank">@item.AzTitle</a></li>
+
+
+                }
+                else if (culture == "en")
+                {
+                    <li><a href="@item.URL" target="_blank">@item.EnTitle</a></li>
+
+
+                }
+                else if (culture == "ru")
+                {
+                    <li><a href="@item.URL" target="_blank">@item.RuTitle</a></li>
+
+
+                }
+            }
+
+            <li>
+                <div class="by_jis">
+                    <p>Site by</p>
+                    <a href="http://www.jis.az/" target="_blank" class="jis">Jeykhun Imanov Studio</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</footer>

@@ -1,0 +1,32 @@
+﻿@model Structure
+<div class="content text-center">
+    <div class="col-lg-5" style="display: inline-block">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">Struktura Düzəliş et </h5>
+                <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                    Go Back
+                </a>
+            </div>
+
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form method="post" enctype="multipart/form-data">
+                    
+                    <div class="form-group form-group-float">
+                        <label asp-for="Photo" style="display: block">Şəkil</label>
+                        <input type="file" asp-for="Photo" class="form-control" placeholder="Photo">
+                        <span class="text-danger" asp-validation-for="@Model.Image"></span>
+                    </div>
+
+                    <button type="submit" class="btn bg-blue-800">Düzəliş et<i class="icon-ml-2"></i></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

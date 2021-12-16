@@ -1,0 +1,60 @@
+﻿@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+ 
+}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>@*@ViewData["Title"] -*@ Paşa Həyat</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/style/basic.css?v=2" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link href="~/style/datepicker.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link href="~/style/new.css?v=2" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <script src="~/js/jquery-3.4.1.min.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js?v=2" asp-append-version="true"></script>
+    <script src="~/js/datepicker.min.js" asp-append-version="true"></script>
+
+   
+    @if (culture == "az")
+    {               
+            <meta name="title" content="@Html.Raw(ViewBag.AzSeoTitle)"/>
+            <meta name="description" content="@Html.Raw(ViewBag.AzSeoDescription)"/>        
+            
+    }
+    else if (culture == "en")
+    {
+            <meta name="title" content="@Html.Raw(ViewBag.EnSeoTitle)"/>
+            <meta name="description" content="@Html.Raw(ViewBag.EnSeoDescription)"/>
+    }
+    else if (culture == "ru")
+    {
+            <meta name="title" content="@Html.Raw(ViewBag.RuSeoTitle)"/>
+            <meta name="description" content="@Html.Raw(ViewBag.RuSeoDescription)"/>
+    }
+
+
+
+    
+   
+
+</head>
+
+<body>
+
+    @await Component.InvokeAsync("Header")
+       
+        
+    @RenderBody()
+
+
+    @*<script src="~/~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/~/lib/bootstrap/dist/~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/~/~/js/site.js" asp-append-version="true"></script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

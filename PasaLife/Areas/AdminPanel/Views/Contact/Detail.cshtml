@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Contact contact = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Əlaqə Ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @contact.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(contact.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ünvan</th>
+                            <td>
+                                @contact.AzAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @contact.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(contact.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Адрес</th>
+                            <td>
+                                @contact.RuAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @contact.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(contact.EnDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>
+                                @contact.EnAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Əlaqə nömrəsi</th>
+                            <td>
+                                @contact.ContactNumber
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

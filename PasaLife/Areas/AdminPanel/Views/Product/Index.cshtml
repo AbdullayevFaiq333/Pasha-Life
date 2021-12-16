@@ -1,0 +1,995 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    List<Product> products = Model;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Məhsullar</h4>
+                <a asp-action="Create" class="btn btn-primary">Yenisini yarat</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr> 
+                                <th>Şəkli</th>
+                                <th>Ad</th>
+                                <th>Status</th>
+                                <th class="text-right pr-3">Əməliyyatlar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(int i = 0; i<products.Count;i++)
+                            {
+                                 var fName = "accord" + i;
+                                 var targetName = "#" + fName;
+                                 var proWord = "proWord" + i;
+                                 var targetProWord = "#" + proWord;
+                                 var proInfo = "proInfo" + i;
+                                 var proInfoTarget = "#" + proInfo;
+                                 var proChart = "proChart" + i;
+                                 var proChartTarget = "#" + proChart;
+                                var partners = "partners" + i;
+                                var partnersTarget = "#" + partners;
+                                var customer="customer" + i;
+                                var customerTarget = "#" + customer;
+                                var faq="faq" + i;
+                                var faqTarget = "#" + faq;
+                                var simple="simple" + i;
+                                var simpleTarget = "#" + simple;
+
+
+
+                                <tr>
+                                    <td>
+                                        <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@products[i].Image" />
+                                    </td>
+                                    <td>
+                                        @products[i].AzTitle
+                                    </td>
+                                    <td>
+                                        @if (products[i].IsDeactive)
+                                        {
+                                            <span class="text-danger">Passiv</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-success">Aktiv </span>
+
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (products[i].IsSimple)
+                                        {
+                                            <div class="d-flex justify-content-end">
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@simpleTarget">
+                                                    Böyük Mətn
+                                                </a>
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@faqTarget">
+                                                    FAQ-lar
+                                                </a>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@simple" tabindex="-1" role="dialog" aria-labelledby="Modal-simple" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Məhsulun Detailindəki böyük mətn</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].SimpleProduct != null)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Qısa Hissəsi
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+
+                                                                                            <tr>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @((products[i].SimpleProduct.AzDescription.Length < 23)? products[i].SimpleProduct.AzDescription : products[i].SimpleProduct.AzDescription.Substring(0,23) + "...")
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    <a asp-controller="SimpleProduct" asp-action="Detail" asp-route-id="@products[i].SimpleProduct.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                    <a asp-controller="SimpleProduct" asp-action="Update" asp-route-id="@products[i].SimpleProduct.Id" class="btn btn-success mr-2">Düzəliş et</a>
+
+                                                                                                    @if (products[i].SimpleProduct.IsDeactive)
+                                                                                                    {
+                                                                                                        <a asp-controller="SimpleProduct" asp-action="Activate" asp-route-id="@products[i].SimpleProduct.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        <a asp-controller="SimpleProduct" asp-action="Delete" asp-route-id="@products[i].SimpleProduct.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                    }
+                                                                                                    <a asp-controller="SimpleProduct" asp-action="Remove" asp-route-id="@products[i].SimpleProduct.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                </td>                           
+                                                                                            </tr>
+
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+
+                                                        @if (products[i].SimpleProduct == null)
+                                                        {
+                                                            <div class="modal-footer">
+                                                                <a style="width:110px !important" class="effect effect-2 create" asp-controller="SimpleProduct" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@faq" tabindex="-1" role="dialog" aria-labelledby="Modal-faq" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan FAQ-lar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].FAQs.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Az - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Eng - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Ru - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (FAQ childİtem in products[i].FAQs)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.AzTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.EnTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.RuTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="FAQ" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="FAQ" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="FAQ" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="FAQ" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="FAQ" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="FAQ" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+
+                                            <div class="d-flex justify-content-end">
+                                                <!-- Button trigger modal -->
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@targetName">
+                                                    Sütun başlıqları
+                                                </a>
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@proInfoTarget">
+                                                    Sol Sütun
+                                                </a>
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@targetProWord">
+                                                    Qeydlər
+                                                </a>
+                                                <!-- Button trigger modal -->
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@proChartTarget">
+                                                    Table-lar
+                                                </a>
+
+                                                <!-- Button trigger modal -->
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@partnersTarget">
+                                                    Partnerlar-lar
+                                                </a>
+
+
+                                                <!-- Button trigger modal -->
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@customerTarget">
+                                                    Müştərilər
+
+                                                </a>
+
+                                                <!-- Button trigger modal -->
+                                                <a class="effect effect-2" data-toggle="modal" data-target="@faqTarget">
+                                                    FAQ-lar
+                                                </a>
+                                            </div>
+                                           
+                                            <div class="modal fade burabax" id=@fName tabindex="-1" role="dialog" aria-labelledby="Modal-proTitle" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailindəki Böyük Mətndi</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].ProductDetailTitle == null)
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                               
+                                                            }
+                                                            else
+                                                            {
+                                                                 <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Title 1
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Title 2
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Title 3
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Title 4
+
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+
+                                                                                            <tr>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @products[i].ProductDetailTitle.AzFirstSection
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @products[i].ProductDetailTitle.AzSecondSection
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @products[i].ProductDetailTitle.AzThirdSection
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @products[i].ProductDetailTitle.AzFourthSection
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    <a asp-controller="ProductDetailTitle" asp-action="Detail" asp-route-id="@products[i].ProductDetailTitle.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                    <a asp-controller="ProductDetailTitle" asp-action="Update" asp-route-id="@products[i].ProductDetailTitle.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                    @if (products[i].ProductDetailTitle.IsDeactive)
+                                                                                                    {
+                                                                                                        <a asp-controller="ProductDetailTitle" asp-action="Activate" asp-route-id="@products[i].ProductDetailTitle.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        <a asp-controller="ProductDetailTitle" asp-action="Delete" asp-route-id="@products[i].ProductDetailTitle.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                    }
+                                                                                                    <a asp-controller="ProductDetailTitle" asp-action="Remove" asp-route-id="@products[i].ProductDetailTitle.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                        @if (products[i].ProductDetailTitle == null)
+                                                        {
+                                                            <div class="modal-footer">
+                                                                <a style="width:110px !important" class="effect effect-2 create" asp-controller="ProductDetailTitle" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade" id="@proInfo" tabindex="-1" role="dialog" aria-labelledby="Modal-proInfo" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailindəki Böyük Mətndi</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].ProductInformation != null)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Qısa Hissəsi
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+
+                                                                                            <tr>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    @if (products[i].ProductInformation.AzDescription != null)
+                                                                                                    {
+                                                                                                        @(Html.Raw((products[i].ProductInformation.AzDescription.Length < 23)? products[i].ProductInformation.AzDescription : products[i].ProductInformation.AzDescription.Substring(0,23) + "..."))
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        
+                                                                                                    }
+                                                                                                </td>
+                                                                                                <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    <a asp-controller="ProductInformation" asp-action="Detail" asp-route-id="@products[i].ProductInformation.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                    <a asp-controller="ProductInformation" asp-action="Update" asp-route-id="@products[i].ProductInformation.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                    @if (products[i].ProductInformation.IsDeactive)
+                                                                                                    {
+                                                                                                        <a asp-controller="ProductInformation" asp-action="Activate" asp-route-id="@products[i].ProductInformation.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        <a asp-controller="ProductInformation" asp-action="Delete" asp-route-id="@products[i].ProductInformation.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                    }
+                                                                                                    <a asp-controller="ProductInformation" asp-action="Remove" asp-route-id="@products[i].ProductInformation.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        @if (products[i].ProductInformation == null)
+                                                        {
+                                                            <div class="modal-footer">
+                                                                <a style="width:110px !important" class="effect effect-2 create" asp-controller="ProductInformation" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@proWord" tabindex="-1" role="dialog" aria-labelledby="Modal-proWord" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan Qeydlər</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].ProductWords.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Soz
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (ProductWord childİtem in products[i].ProductWords)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.AzTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="ProductWord" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="ProductWord" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="ProductWord" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="ProductWord" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="ProductWord" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="ProductWord" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@proChart" tabindex="-1" role="dialog" aria-labelledby="Modal-proChart" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan Table-lar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].ProductCharts.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Az - başlıq
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Eng - başlıq
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Ru - başlıq
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (ProductChart childİtem in products[i].ProductCharts)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.AzTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.EnTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.RuTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="ProductChart" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="ProductChart" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="ProductChart" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="ProductChart" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="ProductChart" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="ProductChart" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@partners" tabindex="-1" role="dialog" aria-labelledby="Modal-partners" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan Partnerlar-lar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].Partners.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Image
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (Partner childİtem in products[i].Partners)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@childİtem.Image" />
+                                                                                                    </td>
+
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="Partner" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="Partner" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="Partner" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="Partner" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="Partner" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="Partner" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@customer" tabindex="-1" role="dialog" aria-labelledby="Modal-customer" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan Müştərilər</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].Customers.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Şəkli
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Tam Adı
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    İşi
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (Customer childİtem in products[i].Customers)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@childİtem.Image" />
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.Name
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.Work
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="Customer" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="Customer" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="Customer" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="Customer" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="Customer" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@faq" tabindex="-1" role="dialog" aria-labelledby="Modal-faq" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content" style="width:900px !important">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">bu Məhsulun Detailində olan FAQ-lar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @if (products[i].FAQs.Count() != 0)
+                                                            {
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 grid-margin stretch-card">
+                                                                        <div class="card">
+                                                                            <div class="card-body">
+
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered">
+                                                                                        <thead style="font-size: 14px !important;">
+                                                                                            <tr>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Az - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Eng - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Ru - Sual
+                                                                                                </th>
+                                                                                                <th style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                    Əməliyatlar
+                                                                                                </th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody style="font-size: 13px !important;">
+                                                                                            @foreach (FAQ childİtem in products[i].FAQs)
+                                                                                            {
+                                                                                                <tr>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.AzTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.EnTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        @childİtem.RuTitle
+                                                                                                    </td>
+                                                                                                    <td style="padding: 0.75rem 0.8375rem !important;">
+                                                                                                        <a asp-controller="FAQ" asp-action="Detail" asp-route-id="@childİtem.Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                                                                                        <a asp-controller="FAQ" asp-action="Update" asp-route-id="@childİtem.Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                                                                                        @if (childİtem.IsDeactive)
+                                                                                                        {
+                                                                                                            <a asp-controller="FAQ" asp-action="Activate" asp-route-id="@childİtem.Id" class="btn btn-outline-success">Aktiv et</a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a asp-controller="FAQ" asp-action="Delete" asp-route-id="@childİtem.Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                                                                                        }
+                                                                                                        <a asp-controller="FAQ" asp-action="Remove" asp-route-id="@childİtem.Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            }
+
+
+
+
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Hal hazırda  mövcud deyil</div>
+                                                            }
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a style="width:110px !important" class="effect effect-2 create" asp-controller="FAQ" asp-action="Create" asp-route-proId="@products[i].Id">Yenisini Yarat </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        
+
+                                    <div class="d-flex justify-content-end mt-2">
+                                        <a asp-action="Detail" asp-route-id="@products[i].Id" class="btn btn-info mr-2">Ətraflı bax</a>
+                                        <a asp-action="Update" asp-route-id="@products[i].Id" class="btn btn-success mr-2">Düzəliş et</a>
+                                        @if (products[i].IsDeactive)
+                                        {
+                                            <a asp-action="Activate" asp-route-id="@products[i].Id" class="btn btn-outline-success">Aktiv et</a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Delete" asp-route-id="@products[i].Id" class="btn btn-secondary mr-2">Deaktiv et</a>
+
+                                        }
+                                        <a asp-action="Remove" asp-route-id="@products[i].Id" class="btn btn-danger" style="margin-left: 8px">Sil</a>
+
+                                    </div>
+                                     </td>
+
+
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Css{
+
+    <style>
+
+
+        .effect.update {
+            background-color: #418d4f;
+        }
+
+        .effect {
+            border: none !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            display: inline-block;
+            Description: relative !important;
+            text-decoration: none !important;
+            color: #fff !important;
+            text-transform: capitalize !important;
+            background-color: #685353;
+            font-size: 12px !important;
+            padding: 10px 0px !important;
+            width: 100px !important;
+            border-radius: 26px !important;
+            overflow: hidden !important;
+        }
+
+            .effect.delete {
+                background-color: #a00606;
+            }
+
+            .effect.detail {
+                background-color: #af7a10;
+            }
+
+            .effect.create {
+                background-color: #278dc9;
+            }
+
+            .effect i {
+                Description: absolute !important;
+                font-family: FontAwesome !important;
+                font-size: 12px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                Description: absolute !important;
+                top: 0 !important;
+                right: -30px !important;
+                width: 20px !important;
+                height: 100% !important;
+                background-color: #ffffff3b !important;
+                border-radius: 0px 6px 6px 0px !important;
+                transition: all 0.2s linear 0s !important;
+                text-align: center !important;
+            }
+
+            .effect.effect-2 {
+                transition: all 0.2s linear 0s !important;
+            }
+
+
+                .effect.effect-2:hover {
+                    text-indent: -30px !important;
+                }
+
+                    .effect.effect-2:hover i {
+                        right: 0 !important;
+                        text-indent: 0px !important;
+                    }
+    </style>
+}
+

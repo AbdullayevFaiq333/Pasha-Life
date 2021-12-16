@@ -1,0 +1,732 @@
+﻿@inject IViewLocalizer Localizer
+@model Product
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    ViewData["Title"] = "Mehsullar";
+
+}
+
+<div class="modal" data-modal="calulator">
+    <div class="modal_content contacs_pp">
+        <button class="close_modal_mobile"></button>
+        <div class="cpp_head">
+            <strong>Yığım Kalkulyatoru</strong>
+            <p>If you have an insurance case, please contact us at 942</p>
+        </div>
+        <div class="form_content">
+            <form>
+                <div class="input_line">
+                    <label>Qoşulmaq istədiyiniz aylıq məbləğ (GROSS)</label>
+                    <input type="text" placeholder="Sığorta haqqını daxil edin" />
+                </div>
+                <div class="input_line">
+                    <label>Əmək haqqı (GROSS)</label>
+                    <input type="text" placeholder="Gross əmək haqqınızı daxil edi" />
+                </div>
+                <div class="input_line">
+                    <label>Doğum tarixi</label>
+                    <input type="email" placeholder="Doğum tarixi daxil edi" />
+                </div>
+                <div class="input_line">
+                    <label>İş yeri</label>
+                    <select>
+                        <option>İş yerinizi seçin</option>
+                    </select>
+                </div>
+                <button class="blue_bttn">Hesabla</button>
+            </form>
+        </div>
+    </div>
+    <button class="modal_bg"></button>
+</div>
+
+<div class="modal" data-modal="order">
+    <div class="modal_content contacs_pp">
+        <button class="close_modal_mobile"></button>
+        <div class="cpp_head">
+            <strong>Konsultasiya üçün müraciət</strong>
+            <p>Adınızı və nömrənizi daxil edərək “Mənə zəng edin“ düyməsinə sıxın. Tez bir zamanda əməkdaşlarımız sizinlə əlaqə saxlayacaq.</p>
+        </div>
+        <div class="form_content">
+            <form>
+                <div class="input_line">
+                    <input type="text" placeholder="Adınız və Soyadınız" />
+                </div>
+                <div class="input_line">
+                    <input type="text" placeholder="Mobil nömrəniz" />
+                </div>
+
+                <button class="blue_bttn">Mənə zəng edin</button>
+            </form>
+        </div>
+    </div>
+    <button class="modal_bg"></button>
+</div>
+
+@if (Model.VideoUrl != null || Model.Video != null)
+{
+    <div class="video_modal">
+        <div class="video_content_wrap">
+            <div class="video_content">
+                <button class="close_video_modal"></button>
+                <div class="iframe_holder">
+                    <iframe width="100%"
+                            height="100%"
+                            src="@Model.VideoUrl"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <button class="video_modal_bg"></button>
+    </div>
+
+
+}
+<div class="page_content">
+    <div class="mid_content endowment_insurance">
+        <div class="mid_wrap">
+            <div class="center_wrap">
+                <div class="product_title">
+                    <div class="product_title_line">
+                        @if (Model.VideoUrl != null || Model.Video != null)
+                        {
+                            <button class="product_video_player">
+                                <div class="play_bttn"></div>
+                                <div class="product_poster" style="background-image:url(images/poster.jpg);"></div>
+                                <video src="~/video/@Model.Video" poster="images/poster.jpg" muted autoplay loop></video>
+                            </button>
+                        }
+
+                        <h2>@Model.AzTitle </h2>
+                    </div>
+                    <div class="product_title_line">
+                        <h2>@Model.AzTitle2</h2>
+                    </div>
+                </div>
+
+                @if (culture == "az")
+                {
+                    <p>
+                        @Html.Raw(Model.AzDetailDescription)
+                    </p>
+                }
+                else if (culture == "ru")
+                {
+
+                    <p>
+                        @Html.Raw(Model.RuDetailDescription)
+                    </p>
+
+
+                }
+                else if (culture == "en")
+                {
+
+                    <p>
+                        @Html.Raw(Model.EnDetailDescription)
+                    </p>
+
+                }
+                <div class="scroller_self">
+                    <div class="ss_content"><span></span></div>
+                            @if (culture == "az")
+                            {
+                                <span>Aşağı skrol et</span>
+                            }
+                            else if (culture == "ru")
+                            {
+                                <span>Прокрутить вниз</span>
+
+                            }
+                            else if (culture == "en")
+                            {
+                                <span>Scroll down</span>
+                                
+                            }
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="product_background" style="display: none;">
+        <video muted loop class="video" autoplay playsinline>
+            <source src="~/video/product_background.mp4" type="video/mp4" />
+        </video>
+    </div>
+</div>
+
+
+@if (Model.IsSimple)
+{
+    if (Model.SimpleProduct != null )
+    {
+        if (Model.SimpleProduct.IsDeactive)
+        {
+
+
+            <div class="white_background_content static_page_content to_top">
+                @if (culture == "az")
+                {
+                    <p>
+
+                        @Html.Raw(Model.SimpleProduct.AzDescription)
+                    </p>
+                }
+                else if (culture == "ru")
+                {
+
+                    <p>
+                        @Html.Raw(Model.SimpleProduct.RuDescription)
+                    </p>
+                }
+                else if (culture == "en")
+                {
+
+                    <p>
+                        @Html.Raw(Model.SimpleProduct.EnDescription)
+                    </p>
+
+                }
+            </div>
+        }
+
+        if(@ViewBag.IsLast){
+            <a href="#" class="next_product compact">
+            @if (culture == "az")
+                            {
+                                <p>Növbəti səhifə</p>
+                                <strong>@ViewBag.nextAzName</strong>
+
+                            }
+                            else if (culture == "ru")
+                            {
+                                <p>Следущая страница</p>
+                                <strong>@ViewBag.nextRuName</strong>
+
+                            }
+                            else if (culture == "en")
+                            {
+                                <p>Next page</p>
+                                <strong>@ViewBag.nextEnName</strong>
+                                
+                            }
+            </a>
+
+        }
+        else
+        {
+            
+            var next = @Model.Id + 1;
+            <a asp-controller="product" asp-action="detail" asp-route-id="@next" class="next_product compact">
+            @if (culture == "az")
+                            {
+                                <p>Növbəti səhifə</p>
+                                <strong>@ViewBag.nextAzName</strong>
+
+                            }
+                            else if (culture == "ru")
+                            {
+                                <p>Следущая страница</p>
+                                <strong>@ViewBag.nextRuName</strong>
+
+                            }
+                            else if (culture == "en")
+                            {
+                                <p>Next page</p>
+                                <strong>@ViewBag.nextEnName</strong>
+                                
+                            }
+            </a>
+            
+        }
+
+
+        
+    }
+    
+
+}
+
+
+else
+    {
+
+
+        <div class="white_background_content to_top">
+            @if (Model.ProductInformation != null )
+            {
+            if (!Model.ProductInformation.IsDeactive)
+            {
+                if (Model.ProductDetailTitle != null)
+                {
+                    <div class="page_section top_bgs">
+                        <div class="fb_right"></div>
+                        <div class="main_wrap_content">
+                            <div class="product_top">
+                                @if (culture == "az")
+                                {
+
+                                    <div class="product_sub">@Model.AzTitle @Model.AzTitle2</div>
+                                    <h3>@Model.ProductDetailTitle.AzFirstSection</h3>
+                                    <p>
+                                        @{
+                                            if (Model.ProductInformation.AzSectionTitle != null)
+                                            {
+                                                @Html.Raw(Model.ProductInformation.AzSectionTitle)
+                                            }
+
+                                        }
+
+                                    </p>
+                                }
+                                else if (culture == "ru")
+                                {
+
+                                    <div class="product_sub">@Model.RuTitle @Model.RuTitle2</div>
+                                    <h3>@Model.ProductDetailTitle.RuFirstSection</h3>
+
+                                    <p>
+                                        if (Model.ProductInformation.RuSectionTitle != null){
+                                        @Html.Raw(Model.ProductInformation.RuSectionTitle)
+                                        }
+
+                                    </p>
+
+
+                                }
+                                else if (culture == "en")
+                                {
+
+                                    <div class="product_sub">@Model.EnTitle @Model.EnTitle2</div>
+                                    <h3>@Model.ProductDetailTitle.EnFirstSection</h3>
+                                    <p>
+                                        @Html.Raw(Model.ProductInformation.EnSectionTitle)
+                                    </p>
+
+                                }
+
+
+                            </div>
+                            <div class="product_columns">
+                                <div class="product_left">
+                                    @if (culture == "az")
+                                    {
+
+                                        <h4>@Model.ProductInformation.AzTitle</h4>
+                                        <p>
+                                            @Html.Raw(Model.ProductInformation.AzDescription)
+                                        </p>
+                                    }
+                                    else if (culture == "ru")
+                                    {
+
+                                        <h4>@Model.ProductInformation.RuTitle</h4>
+                                        <p>
+                                            @Html.Raw(Model.ProductInformation.RuDescription)
+                                        </p>
+
+
+                                    }
+                                    else if (culture == "en")
+                                    {
+
+                                        <h4>@Model.ProductInformation.EnTitle</h4>
+                                        <p>
+                                            @(Model.ProductInformation.EnDescription)
+                                        </p>
+
+                                    }
+                                    @if (Model.ProductWords.Count() != 0)
+                                    {
+                                        <ul class="product_benf">
+                                            @foreach (var item in Model.ProductWords)
+                                            {
+                                                @if (culture == "az")
+                                                {
+                                                    <li>@item.AzTitle</li>
+                                                }
+                                                else if (culture == "ru")
+                                                {
+                                                    <li>@item.RuTitle</li>
+                                                }
+                                                else if (culture == "en")
+                                                {
+                                                    <li>@item.EnTitle</li>
+                                                }
+
+                                            }
+                                        </ul>
+
+                                    }
+
+                                    <button class="blue_bttn open_modal" data-modal="order">Mənə zəng edin</button>
+                                </div>
+                                <div class="product_right">
+                                    <div class="product_grid">
+
+                                        @foreach (var item in Model.ProductCharts)
+                                        {
+
+                                            @if (culture == "az")
+                                            {
+
+                                                <div class="pg_item">
+                                                    <b>@item.AzTitle</b>
+                                                    <p>
+
+                                                        @Html.Raw(item.AzDescription)
+                                                    </p>
+                                                </div>
+                                            }
+                                            else if (culture == "ru")
+                                            {
+
+                                                <div class="pg_item">
+                                                    <b>@item.RuTitle</b>
+                                                    <p>
+                                                        @Html.Raw(item.RuDescription)
+                                                    </p>
+                                                </div>
+
+
+                                            }
+                                            else if (culture == "en")
+                                            {
+
+                                                <div class="pg_item">
+                                                    <b>@item.EnTitle</b>
+                                                    <p>
+                                                        @Html.Raw(item.EnDescription)
+                                                    </p>
+                                                </div>
+
+                                            }
+                                        }
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                
+            }
+          
+            }
+            @if (Model.Partners.Count() > 0)
+            {
+                <div class="page_section">
+                    <div class="main_wrap_content">
+                        <div class="companies_searcher">
+
+
+                            @if (culture == "az")
+                            {<h3>
+
+                                    @Model.ProductDetailTitle.AzSecondSection
+                                </h3>
+                            }
+                            else if (culture == "ru")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.RuSecondSection
+                                </h3>
+
+
+                            }
+                            else if (culture == "en")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.EnSecondSection
+                                </h3>
+
+                            }
+
+
+                        </div>
+                    </div>
+                    <div class="clients_marquee">
+                        <div class="c_marquee_inner">
+                            <div class="marquee_item">
+                                @foreach (var item in Model.Partners)
+                                {
+                               
+                                <div  class="client_item" >
+                                    <img src="~/images/@item.Image"/>
+                                       
+                                    </div>
+                                    
+
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Customers.Count() > 0)
+            {
+                <div class="page_section">
+                    <div class="main_wrap_content">
+                        <div class="reviews">
+                            @if (culture == "az")
+                            {<h3>
+
+                                    @Model.ProductDetailTitle.AzThirdSection
+                                </h3>
+                            }
+                            else if (culture == "ru")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.RuThirdSection
+                                </h3>
+
+
+                            }
+                            else if (culture == "en")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.EnThirdSection
+                                </h3>
+
+                            }
+                            <div class="reviews_wrapper">
+                                <div class="reviews_grid">
+                                    @foreach (var item in Model.Customers)
+                                    {
+                                        <div class="review_item">
+                                            <div class="review_top">
+                                                
+                                                <div class="person_image" >
+
+                                                    <img src="~/images/@item.Image" style="width:100%" />
+                                                </div>
+                                                <div class="person_name">
+                                                    <strong>@item.Name</strong>
+                                                    <p>@item.Work</p>
+                                                </div>
+                                            </div>
+                                            <div class="review_bottom">
+
+                                                @if (culture == "az")
+                                                {
+
+                                                    <p>@Html.Raw(item.AzDescription)</p>
+                                                }
+                                                else if (culture == "ru")
+                                                {
+
+                                                    <p>@Html.Raw(item.RuDescription)</p>
+                                                }
+                                                else if (culture == "en")
+                                                {
+
+                                                    <p>@Html.Raw(item.EnDescription)</p>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.FAQs.Count() > 0)
+            {
+                <div class="page_section faq_bgs">
+                    <div class="fb_left"></div>
+                    <div class="fb_right"></div>
+                    <div class="main_wrap_content">
+                        <div class="faq">
+                            @if (culture == "az")
+                            {<h3>
+
+                                    @Model.ProductDetailTitle.AzFourthSection
+                                </h3>
+                            }
+                            else if (culture == "ru")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.RuFourthSection
+                                </h3>
+
+
+                            }
+                            else if (culture == "en")
+                            {
+
+                                <h3>
+
+                                    @Model.ProductDetailTitle.EnFourthSection
+                                </h3>
+
+                            }
+                            <div class="faq_self">
+                                <ul>
+                                    @foreach (var item in Model.FAQs)
+                                    {
+                                        <li>
+
+                                            <button class="question">
+                                                @if (culture == "az")
+                                                {
+
+                                                    <strong>@item.AzTitle</strong>
+                                                }
+                                                else if (culture == "ru")
+                                                {
+
+                                                    <strong>@item.RuTitle</strong>
+
+                                                }
+                                                else if (culture == "en")
+                                                {
+
+                                                    <strong>@item.EnTitle</strong>
+
+                                                }
+
+                                            </button>
+                                            <div class="answer">
+                                                @if (culture == "az")
+                                                {
+
+                                                    @Html.Raw(item.AzDescription)
+                                                }
+                                                else if (culture == "ru")
+                                                {
+
+                                                    @Html.Raw(item.RuDescription)
+                                                }
+                                                else if (culture == "en")
+                                                {
+
+                                                    @Html.Raw(item.EnDescription)
+                                                }
+                                            </div>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+            <div class="sticky_actions">
+                @if (culture == "az")
+                            {
+                                <button class=" border_bttn open_modal" data-modal="calulator">Kalkulyator</button>
+                                <a href="https://mylife.az/onlineapp" target="_blank" class="green_bttn ">Sorğu göndər</a>
+                            }
+                            else if (culture == "ru")
+                            {
+                                <button class=" border_bttn open_modal" data-modal="calulator">Калькулятор</button>
+                                <a href="https://mylife.az/onlineapp" target="_blank" class="green_bttn ">Отправить запрос</a>
+                            }
+                            else if (culture == "en")
+                            {
+                                <button class=" border_bttn open_modal" data-modal="calulator">Calculator</button>
+                                <a href="https://mylife.az/onlineapp" target="_blank" class="green_bttn ">Send a request</a>
+                            }
+                
+            </div>
+        </div>
+
+       if(@ViewBag.IsLast){
+            <a href="#" class="next_product compact">
+                            @if (culture == "az")
+                            {
+                                <p>Növbəti səhifə</p>
+                                <strong>@ViewBag.nextAzName</strong>
+
+                            }
+                            else if (culture == "ru")
+                            {
+                                <p>Следущая страница</p>
+                                <strong>@ViewBag.nextRuName</strong>
+
+                            }
+                            else if (culture == "en")
+                            {
+                                <p>Next page</p>
+                                <strong>@ViewBag.nextEnName</strong>
+                                
+                            }
+           </a>
+
+    }
+    else
+    {
+        var action = "";
+        if (ViewBag.IsNextSimple)
+        {
+            action = "simpledetail";
+
+        }
+        else
+        {
+            action = "detail";
+        }
+        var next = @Model.Id + 1;
+            <a asp-controller="product" asp-action=@action asp-route-id="@ViewBag.nextId" class="next_product compact">
+                            @if (culture == "az")
+                            {
+                                <p>Növbəti səhifə</p>
+                                <strong>@ViewBag.nextAzName</strong>
+
+                            }
+                            else if (culture == "ru")
+                            {
+                                <p>Следущая страница</p>
+                                <strong>@ViewBag.nextRuName</strong>
+
+                            }
+                            else if (culture == "en")
+                            {
+                                <p>Next page</p>
+                                <strong>@ViewBag.nextEnName</strong>
+                                
+                            }
+        </a>
+            
+        }
+    }
+
+ @await Component.InvokeAsync("Footer")
+
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

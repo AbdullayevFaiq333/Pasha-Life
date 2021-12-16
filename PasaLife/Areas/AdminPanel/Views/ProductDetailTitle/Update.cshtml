@@ -1,0 +1,106 @@
+﻿@model ProductDetailTitle
+<div class="content text-center">
+    <div class="col-lg-5" style="display: inline-block">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">@Model.AzFirstSection düzəliş et </h5>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                    Go Back
+                </a>
+            </div>
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 20%; margin-left: 35%">
+                <label class="btn btn-secondary active language" id="0header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Az
+                </label>
+                <label class="btn btn-secondary language" id="1header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Ru
+                </label>
+                <label class="btn btn-secondary language" id="2header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> En
+                </label>
+            </div>
+
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group header-body form-group-float">
+                        <label asp-for="@Model.AzFirstSection">Birinci hissə</label>
+                        <input asp-for="@Model.AzFirstSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.AzFirstSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float">
+                        <label asp-for="@Model.RuFirstSection">Первая часть</label>
+                        <input asp-for="@Model.RuFirstSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.RuFirstSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float">
+                        <label asp-for="@Model.EnFirstSection">First Section</label>
+                        <input asp-for="@Model.EnFirstSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.EnFirstSection"></span>
+                    </div>
+
+                    <div class="form-group language-body form-group-float">
+                        <label asp-for="@Model.AzSecondSection">İkinci hissə</label>
+                        <input asp-for="@Model.AzSecondSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.AzSecondSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float">
+                        <label asp-for="@Model.RuSecondSection">Вторая часть</label>
+                        <input asp-for="@Model.RuSecondSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.RuSecondSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float">
+                        <label asp-for="@Model.EnSecondSection">Second Section</label>
+                        <input asp-for="@Model.EnSecondSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.EnSecondSection"></span>
+                    </div>
+
+                    <div class="form-group third-body form-group-float">
+                        <label asp-for="@Model.AzThirdSection">Üçüncü hissə</label>
+                        <input asp-for="@Model.AzThirdSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.AzThirdSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group third-body form-group-float">
+                        <label asp-for="@Model.RuThirdSection">Третья часть</label>
+                        <input asp-for="@Model.RuThirdSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.RuThirdSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group third-body form-group-float">
+                        <label asp-for="@Model.EnThirdSection">Third Section</label>
+                        <input asp-for="@Model.EnThirdSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.EnThirdSection"></span>
+                    </div>
+
+                    <div class="form-group form-group-float">
+                        <label asp-for="@Model.AzFourthSection">Dördüncü hissə </label>
+                        <input asp-for="@Model.AzFourthSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.AzFourthSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group fourth-body form-group-float">
+                        <label asp-for="@Model.RuFourthSection">Четвертая часть</label>
+                        <input asp-for="@Model.RuFourthSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.RuFourthSection"></span>
+                    </div>
+                    <div style="display:none" class="form-group fourth-body form-group-float">
+                        <label asp-for="@Model.EnFourthSection">Fourth Section</label>
+                        <input asp-for="@Model.EnFourthSection" class="form-control" style="height: 8em">
+                        <span class="text-danger" asp-validation-for="@Model.EnFourthSection"></span>
+                    </div>
+
+                    <button type="submit" class="btn bg-blue-800">Düzəliş et<i class="icon-ml-2"></i></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/js/language.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/vendor/jquery/jcrop.js"></script>
+
+
+}

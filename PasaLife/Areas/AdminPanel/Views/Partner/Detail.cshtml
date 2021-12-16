@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Partner partner = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Partner Haqqında ətraflı</h2>
+            <a asp-controller="Product"  asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>               
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:200px;height:100px;object-fit:cover;border-radius:10%" src="~/images/@partner.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

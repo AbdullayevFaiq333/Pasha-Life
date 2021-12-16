@@ -1,0 +1,171 @@
+﻿@model ReportViewModel
+
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+    ViewData["Title"] = "Hesabatlar";
+    bool IsTrueCat = true;
+    bool IsTrueRep = true;
+}
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        @if (culture == "az")
+        {
+            <h2>Hesabatlar</h2>
+
+        }
+        else if (culture == "en")
+        {
+            <h2>Reports</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>Отчеты</h2>
+            
+        }
+        @await Component.InvokeAsync("SecondMenu")
+
+    </div>
+
+    <div class="white_background_content static_page_content">
+        <div class="reports_item">
+            <div class="page_section_head">
+                @if (culture == "az")
+                {
+                    <h4>Hesabatlar</h4>
+
+                }
+                else if (culture == "en")
+                {
+                    <h4>Reports</h4>
+
+                }
+                else if (culture == "ru")
+                {
+                    <h4>Отчеты</h4>
+            
+                }
+                <ul class="switcher" data-switcher-name="reports">
+                    @foreach (ReportCategory item in Model.ReportCategories)
+                    {
+                        @if (culture == "az")
+                        {
+                            <li><button class=" @(IsTrueCat?"active":"")" data-tab="cat-@item.Id">@item.AzName</button></li>
+
+                        }
+                        else if (culture == "en")
+                        {
+                            <li><button class=" @(IsTrueCat?"active":"")"  data-tab="cat-@item.Id">@item.EnName</button></li>
+
+                        }
+                        else if (culture == "ru")
+                        {
+                            <li><button  class=" @(IsTrueCat?"active":"")"  data-tab="cat-@item.Id)">@item.RuName</button></li>
+
+                        }
+                        IsTrueCat = false;
+
+                    }
+
+                </ul>
+            </div>
+            <div class="tabs_for_switcher" data-switcher-name="reports">
+                @foreach (var item in Model.ReportCategories)
+                {
+                    @if (culture == "az")
+                    {
+                        
+                        <div class="tab_content @(IsTrueRep?"active":"")" data-tab="cat-@item.Id" >
+                            <div class="r_content_grid">
+                                @foreach (var report in item.Reports)
+                               {
+                                   
+                                  <div class="report_item"  >
+                                    <a href="#" class="report_link" target="_blank">
+                                        <div class="report_top">
+                                            <div class="file_format">PDF</div>
+                                            <div class="rp_y">@report.Year</div>
+                                            <strong>@report.AzName</strong>
+                                        </div>
+                                        <p>@report.Size.ToUpper()</p>
+                                    </a>
+                                </div> 
+
+                               }
+                                
+                            </div>
+                        </div>
+                    }
+                    else if (culture == "en")
+                    {
+                        <div class="tab_content @(IsTrueRep?"active":"")" data-tab="cat-@item.Id">
+                            <div class="r_content_grid">
+                                @foreach (var report in item.Reports)
+                                {
+                                    <div class="report_item">
+                                    <a href="#" class="report_link" target="_blank">
+                                        <div class="report_top">
+                                            <div class="file_format">PDF</div>
+                                            <div class="rp_y">@report.Year</div>
+                                            <strong>@report.EnName</strong>
+                                        </div>
+                                        <p>@report.Size.ToUpper()</p>
+                                    </a>
+                                </div>
+                                }
+                                
+                            </div>
+                        </div>
+                    }
+                    else if (culture == "ru")
+                    {
+                        <div class="tab_content @(IsTrueRep?"active":"")" data-tab="cat-@item.Id">
+                            <div class="r_content_grid">
+                                @foreach (var report in item.Reports)
+                                {
+                                   <div class="report_item">
+                                    <a href="#" class="report_link" target="_blank">
+                                        <div class="report_top">
+                                            <div class="file_format">PDF</div>
+                                            <div class="rp_y">@report.Year</div>
+                                            <strong>@report.RuName</strong>
+                                        </div>
+                                        <p>@report.Size.ToUpper()</p>
+                                    </a>
+                                </div> 
+                                }
+
+                            </div>
+                        </div>
+                    }
+                    IsTrueRep = false;
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+        @await Component.InvokeAsync("Footer")
+
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

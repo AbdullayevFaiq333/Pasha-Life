@@ -1,0 +1,169 @@
+﻿@model CareerViewModel
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+    ViewData["Title"] = "Karyera";
+}
+
+<div class="video_modal">
+    <div class="video_content_wrap">
+        <div class="video_content">
+            <button class="close_video_modal"></button>
+            <div class="iframe_holder">
+                <iframe width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/5O3XjaYWyq4"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <button class="video_modal_bg"></button>
+</div>
+
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        @if (culture == "az")
+        {
+            <h2>Karyera</h2>
+
+        }
+        else if (culture == "en")
+        {
+            <h2>Career</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>Карьера</h2>
+            
+        }
+        @await Component.InvokeAsync("SecondMenu")
+
+    </div>
+
+    <div class="white_background_content static_page_content">
+        <div class="main_cols about_cols">
+
+            <div class="col about_desc">
+                @if (culture == "az")
+                {
+
+                    <h2>@Model.Career.AzTitle</h2>
+                    <p>
+                        @Html.Raw(Model.Career.AzDescription)
+                    </p>
+
+                }
+                else if (culture == "en")
+                {
+                    <h2>@Model.Career.EnTitle</h2>
+                    <p>
+                        @Html.Raw(Model.Career.EnDescription)
+                    </p>
+
+                }
+                else if (culture == "ru")
+                {
+
+                    <h2>@Model.Career.RuTitle</h2>
+                    <p>
+                        @Html.Raw(Model.Career.RuDescription)
+                    </p>
+                }
+                
+            </div>
+            <div class="col about_video">
+                <div class="single_image">
+                    <div class="preview_image" style="background-image:url(images/@Model.Career.Image);"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="vacancies_block">
+            @if (culture == "az")
+            {
+            <h2>Mövcud vakansiyalar</h2>
+                
+            }
+            else if (culture == "en")
+            {
+            <h2>Available vacancies</h2>
+                
+            }
+            else if (culture == "ru")
+            {
+            <h2>Доступные вакансии</h2>
+                
+            }
+
+             
+            <div class="vacancies_grid">
+                @foreach (var item in Model.Vacancies)
+               {
+                    @if (culture == "az")
+                    {
+                       
+                        <article class="vacancy_item">
+                          <div>
+                            <h3>@item.AzTitle</h3>
+                            <p>@Html.Raw(item.AzDescription)</p>
+                         </div>
+                         <div class="link">
+                            <a asp-controller="Career" asp-action="CareerItem" asp-route-id="@item.Id">Dəha ətraflı</a>
+                         </div>
+                       </article>
+                    }
+                    else if (culture == "en")
+                    {
+                        <article class="vacancy_item">
+                          <div>
+                            <h3>@item.EnTitle</h3>
+                            <p>@Html.Raw(item.EnDescription)</p>
+                         </div>
+                         <div class="link">
+                            <a asp-controller="Career" asp-action="CareerItem" asp-route-id="@item.Id">More details</a>
+                         </div>
+                       </article>
+                    }
+                    else if (culture == "ru")
+                    {
+                        <article class="vacancy_item">
+                          <div>
+                            <h3>@item.RuTitle</h3>
+                            <p>@Html.Raw(item.RuDescription)</p>
+                         </div>
+                         <div class="link">
+                            <a asp-controller="Career" asp-action="CareerItem" asp-route-id="@item.Id">Подробнее</a>
+                         </div>
+                       </article>
+                    }
+                }
+               
+                
+            </div>
+        </div>
+
+    </div>
+        @await Component.InvokeAsync("Footer")
+    
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>

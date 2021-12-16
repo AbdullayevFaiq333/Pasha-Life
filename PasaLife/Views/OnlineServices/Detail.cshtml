@@ -1,0 +1,80 @@
+﻿@inject IViewLocalizer Localizer
+@model OnlineService
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    ViewData["Title"] = "Online xidmətlər";
+}
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+
+        @if (culture == "az")
+        {
+
+            <h2>@Model.AzTitle</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>@Model.RuTitle</h2>
+        }
+        else if (culture == "en")
+        {
+            <h2>@Model.EnTitle</h2>
+        }
+    </div>
+
+
+    <div class="content_min">
+        <div class="center_buttons_services">
+            @foreach (ITPlatform item in Model.ITPlatforms)
+            {
+                <div class="center_button_item">
+                    <a href="@item.URL" target="_blank">
+                        <div class="icon"  >
+                              <img style="width:150px;height:150px;background: no-repeat center" src="~/style/img/@item.Image" alt="">
+                            </div>
+                        <div class="description">
+                            @if (culture == "az")
+                            {
+
+                                <strong>@item.AzTitle</strong>
+                                <p>@item.AzDescription</p>
+
+                            }
+                            else if (culture == "ru")
+                            {
+                                <strong>@item.RuTitle</strong>
+                                <p>@item.RuDescription</p>
+                            }
+                            else if (culture == "en")
+                            {
+                                <strong>@item.EnDescription</strong>
+                                <p>@item.EnDescription</p>
+                            }
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+        @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

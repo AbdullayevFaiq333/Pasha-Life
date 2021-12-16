@@ -1,0 +1,36 @@
+﻿
+@model List<SecondMenu>
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    
+}
+
+<div class="abn_wrap">
+    <div class="about_navigation">
+        <ul>
+            @foreach (SecondMenu item in Model)
+            {
+                if (culture == "az")
+                {
+
+                    <li><a asp-controller="@item.URL">@item.AzTitle</a></li>
+
+
+                }
+                else if (culture == "en")
+                {
+                    <li><a asp-controller="@item.URL">@item.EnTitle</a></li>
+
+
+                }
+                else if (culture == "ru")
+                {
+                    <li><a asp-controller="@item.URL">@item.RuTitle</a></li>
+
+
+                }
+            }
+            
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Management management = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Rəhbərlik Haqqında ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>            
+                        <tr>
+                            <th scope="row">Adı</th>
+                            <td>
+                                @management.AzFullName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vəzifəsi</th>
+                            <td>
+                                @management.AzPosition
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Haqqında Azərbaycan dilində</th>
+                            <td>
+                                @Html.Raw(management.ManagementDetail.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">О на русском</th>
+                            <td>
+                                @Html.Raw(management.ManagementDetail.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">About in English</th>
+                            <td>
+                                @Html.Raw(management.ManagementDetail.EnDescription)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/persons/@management.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

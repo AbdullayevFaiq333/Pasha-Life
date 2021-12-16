@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Report report= Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Hesabatlar Ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @report.AzName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @report.RuName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @report.EnName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">İl</th>
+                            <td>
+                                @report.Year
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pdf</th>
+                            <td>
+                                @report.FileName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ölçü</th>
+                            <td>
+                                @report.Size
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

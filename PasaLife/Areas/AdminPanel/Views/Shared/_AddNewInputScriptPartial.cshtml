@@ -1,0 +1,128 @@
+﻿<script>
+    function returnCreatedDiv() {
+       
+        var div = document.createElement("div");
+        div.setAttribute("class", "d-flex justify-content-between");
+        div.append(returnCreatedTitle())
+        div.append(returnCreatedValue())
+        return div;
+    }
+    function returnCreatedDivRu() {
+
+        var div = document.createElement("div");
+        div.setAttribute("class", "d-flex justify-content-between");
+        div.append(returnCreatedTitleRu())
+        div.append(returnCreatedValueRu())
+        return div;
+    }
+    function returnCreatedDivEn() {
+
+        var div = document.createElement("div");
+        div.setAttribute("class", "d-flex justify-content-between");
+        div.append(returnCreatedTitleEn())
+        div.append(returnCreatedValueEn())
+        return div;
+    }
+    function returnCreatedTitle() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("name", "azTitles[]");
+
+        input.setAttribute("class", "form-control");
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        
+        var label = document.createElement("label");
+        label.append("Başlıq Az");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    function returnCreatedValue() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "azDescriptions[]");
+
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        var label = document.createElement("label");
+        label.append("Mətin Az");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    function returnCreatedTitleRu() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "ruTitles[]");
+
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        var label = document.createElement("label");
+        label.append("Başlıq Ru");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    function returnCreatedValueRu() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "ruDescriptions[]");
+
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        var label = document.createElement("label");
+        label.append("Mətin Ru");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    function returnCreatedTitleEn() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "enTitles[]");
+
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        var label = document.createElement("label");
+        label.append("Başlıq En");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    function returnCreatedValueEn() {
+        var input = document.createElement("INPUT");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "enDescriptions[]");
+        var span = document.createElement("span");
+        span.setAttribute("class", "text-danger");
+        var label = document.createElement("label");
+        label.append("Mətin En");
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-group form-group-float");
+        div.append(label)
+        div.append(input)
+        div.append(span)
+        return div;
+    }
+    var plusButton = document.getElementById("plusButton");
+    plusButton.addEventListener("click", function () {
+        document.getElementById("createdinputs").append(returnCreatedDiv())
+        document.getElementById("createdinputs").append(returnCreatedDivRu())
+        document.getElementById("createdinputs").append(returnCreatedDivEn())
+    })
+</script>

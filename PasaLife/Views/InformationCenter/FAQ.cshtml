@@ -1,0 +1,85 @@
+﻿@inject IViewLocalizer Localizer
+@model List<FAQ>
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+    ViewData["Title"] = "FAQ";
+}
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="white_background_content static_page_content">
+        <div class="faq">
+            <h3>Faq item</h3>
+            <div class="faq_self">
+                <ul>
+                    @foreach (FAQ item in Model)
+                     {
+                    <li>
+
+                        @if (culture == "az")
+                        {
+                            <button class="question">
+                                <strong>@item.AzTitle</strong>
+                            </button>
+                            <div class="answer">
+                                <p>
+                                    @Html.Raw(item.AzDescription)
+                                </p>
+                            </div>
+                        }
+                        else if (culture == "ru")
+                        {
+
+                            <button class="question">
+                                <strong>@item.RuTitle</strong>
+                            </button>
+                            <div class="answer">
+                                <p>
+                                    @Html.Raw(item.RuDescription)
+                                </p>
+                            </div>
+
+
+                        }
+                        else if (culture == "en")
+                        {
+                            <button class="question">
+                                <strong>@item.EnTitle</strong>
+                            </button>
+                            <div class="answer">
+                                <p>
+                                    @Html.Raw(item.EnDescription)
+                                </p>
+                            </div>
+                        }
+                    </li>
+                     }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

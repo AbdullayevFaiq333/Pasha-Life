@@ -1,0 +1,161 @@
+﻿@inject IViewLocalizer Localizer
+@model HeaderViewModel
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var context = Context.Request;
+    var url = context.Path + context.QueryString;
+}
+<header>
+    <div class="logo_side">
+        <a asp-controller="Home" asp-action="Index" class="logo">
+            
+            <div class="logo_white"></div>
+            <div class="logo_color"></div>    
+            
+
+
+            
+        </a>
+        <div class="lang_select">
+
+            @if (culture == "az")
+            {
+                <a class="active_lang open_select">AZ</a>
+                <div class="select_box">
+                    <div class="select_content">
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url" class="active">AZ</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url">EN</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url">RU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+            else if (culture == "en")
+            {
+                <a class="active_lang open_select">EN</a>
+                <div class="select_box">
+                    <div class="select_content">
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url">AZ</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url" class="active">EN</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url">RU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+            else if (culture == "ru")
+            {
+                <a class="active_lang open_select">RU</a>
+                <div class="select_box">
+                    <div class="select_content">
+                        <ul>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url">AZ</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url">EN</a></li>
+                            <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url" class="active">RU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+    <div class="main_menu">
+        <div class="mm_wrap">
+            <div class="menu_header">
+                <div class="lang_select">
+                    @if (culture == "az")
+                    {
+                        <a class="active_lang open_select">AZ</a>
+                        <div class="select_box">
+                            <div class="select_content">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url" class="active">AZ</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url">EN</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url">RU</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                    else if (culture == "en")
+                    {
+                        <a class="active_lang open_select">EN</a>
+                        <div class="select_box">
+                            <div class="select_content">
+                                <ul>
+
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url" class="active">EN</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url">AZ</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url">RU</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                    else if (culture == "ru")
+                    {
+                        <a class="active_lang open_select">RU</a>
+                        <div class="select_box">
+                            <div class="select_content">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-url="@url" class="active">RU</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="az" asp-route-url="@url">AZ</a></li>
+                                    <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-url="@url">EN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    @foreach (Navbar item in Model.Navbars)
+                    {
+                        if (culture == "az")
+                        {
+                            <li><a href="@(context.PathBase+item.URL)">@item.AzTitle</a></li>
+
+                        }
+                        else if (culture == "en")
+                        {
+                            <li><a href="@(context.PathBase+item.URL)">@item.EnTitle</a></li>
+
+                        }
+                        else if (culture == "ru")
+                        {
+                            <li><a href="@(context.PathBase+item.URL)">@item.RuTitle</a></li>
+
+                        }
+                    }
+
+                </ul>
+            </nav>
+            <button class="close_menu"></button>
+        </div>
+    </div>
+    <div class="header_actions">
+        <a href="tel:+99412942" class="call_us"><span>942</span></a>
+        <a href="https://mylife.az/" target="_blank" class="login_bttn"><span>
+                        @if (culture == "az")
+                        {
+                            @Model.IconButton.AzName
+
+                        }
+                        else if (culture == "en")
+                        {
+                            @Model.IconButton.EnName
+
+                        }
+                        else if (culture == "ru")
+                        {
+                            @Model.IconButton.RuName
+
+                        }</span></a>
+        <button class="mobile_menu"></button>
+    </div>
+</header>

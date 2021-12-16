@@ -1,0 +1,65 @@
+﻿
+@model About
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+ 
+    ViewData["Title"] = "Haqqımızda";
+
+}
+
+
+<div class="page_content about_page">
+    <div class="mid_content">
+        <div class="mid_wrap">
+            <div class="center_wrap">
+                @if (culture == "az")
+                {
+
+                    <h2><span>@Model.AzTitle</span><span></span></h2>
+                    <p>
+                        @Html.Raw(Model.AzDescription)
+                    </p>
+                }
+                else if (culture == "en")
+                {
+                    <h2><span>@Model.EnTitle</span><span></span></h2>
+                    <p>
+                        @Html.Raw(Model.EnDescription)
+                    </p>
+
+                }
+                else if (culture == "ru")
+                {
+                    <h2><span>@Model.RuTitle</span><span></span></h2>
+                    <p>
+                        @Html.Raw(Model.RuDescription)
+                    </p>
+
+                }
+                @await Component.InvokeAsync("SecondMenu")
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Footer")
+
+<div class="about_background">
+    <video muted class="video video_web" autoplay loop playsinline>
+        <source src="~/video/about.mp4" type="video/mp4" />
+    </video>
+    <video muted class="video video_mobile" autoplay loop playsinline>
+        <source src="~/video/about_mobile.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

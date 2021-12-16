@@ -1,0 +1,56 @@
+﻿@model ManagementCategory
+<div class="content text-center">
+    <div class="col-lg-5" style="display: inline-block">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">@Model.AzName düzəliş et </h5>
+                <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                    Go Back
+                </a>
+            </div>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 20%; margin-left: 35%">
+                <label class="btn btn-secondary active language" id="0header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Az
+                </label>
+                <label class="btn btn-secondary language" id="1header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Ru
+                </label>
+                <label class="btn btn-secondary language" id="2header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> En
+                </label>
+            </div>
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form method="post" enctype="multipart/form-data" >
+
+
+                    <div class="form-group language-body form-group-float ">
+                        <label asp-for="@Model.AzName">Azerbaycan dilində kateqorinin adı</label>
+                        <input asp-for="@Model.AzName" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzName"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float">
+                        <label asp-for="@Model.RuName">Название категории на русском</label>
+                        <input asp-for="@Model.RuName" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuName"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float">
+                        <label asp-for="@Model.EnName">The name of the category in English</label>
+                        <input asp-for="@Model.EnName" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnName"></span>
+                    </div>
+                    <button type="submit" class="btn bg-blue-800">Yarat<i class="icon-ml-2"></i></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/js/JavaScript.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

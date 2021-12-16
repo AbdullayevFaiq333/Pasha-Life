@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/img/favicon-32x324cab.png" rel="shortcut icon" type="image/png">
+    <title>Paşa Həyat – Admin</title>
+
+    <!-- Global stylesheets -->
+    <link href="~/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script src="~/global_assets/js/main/jquery.min.js"></script>
+    <script src="~/global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="~/global_assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+    <script src="~/global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script src="~/global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="~/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="~/global_assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="~/global_assets/js/plugins/pickers/daterangepicker.js"></script>
+
+    <script src="~/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+    <script src="~/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+
+    <script src="~/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+    <script src="~/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+
+    <script src="~/global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="~/global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="~/global_assets/js/plugins/forms/styling/switch.min.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/global_assets/js/demo_pages/dashboard.js"></script>
+    <script src="~/global_assets/js/demo_pages/form_select2.js"></script>
+    <script src="~/global_assets/js/demo_pages/uploader_bootstrap.js"></script>
+    <script src="~/global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+    <script src="https://kit.fontawesome.com/313072b3cf.js" crossorigin="anonymous"></script>
+    @RenderSection("Css", false)
+    <style>
+        .nav-link {
+            color: white !important;
+            font-size: 15px !important;
+            padding: 7px 30px !important;
+            padding-right: 10px !important;
+        }
+
+        .my-hr {
+            height: 1px;
+            width: 100%;
+            background-color: white !important
+        }
+
+        .card-sidebar-mobile > ul > li > a {
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-md navbar-dark" style="background: #297358">
+        <div class="navbar-brand">
+            <a asp-area="AdminPanel" asp-controller="Navbar" asp-action="Index" class="d-inline-block">
+                <img src="/style/img/logo.svg" alt="Paşa Həyat" style="height:60px">
+            </a>
+        </div>
+
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
+            <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                <i class="icon-paragraph-justify3"></i>
+            </button>
+        </div>
+       
+
+        <div class="collapse navbar-collapse" id="navbar-mobile" style="justify-content:end">
+
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-user">
+                    <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/global_assets/images/placeholders/cover.png" class="rounded-circle mr-2" height="34" alt="">
+                        <span>@User.Identity.Name</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="ChangePassword" asp-action="Index" class="dropdown-item"><i class="icon-new"></i>Şifrə yeniləmək</a>
+                            <div class="dropdown-divider"></div>
+                            <a asp-controller="Account" asp-action="Logout" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="Login" class="dropdown-item"><i class="icon-switch2"></i> Login</a>
+
+                        }
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main sidebar-expand-md" style="background-color: #E8EEED">
+
+            <!-- Sidebar mobile toggler -->
+            <div class="sidebar-mobile-toggler text-center">
+                <a href="#" class="sidebar-mobile-main-toggle">
+                    <i class="icon-arrow-left8"></i>
+                </a>
+                Navigation
+                <a href="#" class="sidebar-mobile-expand">
+                    <i class="icon-screen-full"></i>
+                    <i class="icon-screen-normal"></i>
+                </a>
+            </div>
+            <!-- /sidebar mobile toggler -->
+            <!-- Sidebar content -->
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <div class="sidebar-user">
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+                <!-- /user menu -->
+                <!-- Main navigation -->
+                <div class="card card-sidebar-mobile">
+                    <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                        <!-- Main -->
+
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"> <span style="color: black"><i class="icon-copy"></i>Əsas Səhifə</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                <li class="nav-item"><a asp-controller="Navbar" asp-action="Index" class="nav-link colorblack"><span style="color: #000000">Navbar(Əsas Səhifələr)</span></a></li>
+                                <li class="nav-item"><a asp-controller="HomeCenter" asp-action="Index" class="nav-link colorblack"><span style="color: #000000">Mərkəz(3 səhifə)</span></a></li>
+                                <li class="nav-item"><a asp-controller="Footer" asp-action="Index" class="nav-link colorblack"><span style="color: #000000">Footer-dakı Səhifələr</span> </a></li>
+                                <li class="nav-item"><a asp-controller="SocialMedia" asp-action="Index" class="nav-link colorblack"><span style="color: #000000">Sosial şəbəkələr</span> </a></li>
+                                <li class="nav-item"><a asp-controller="IconButton" asp-action="Index" class="nav-link "> <span style="color: #000000">Şəxsi Kabinet(Icon və başlıq)</span></a></li>
+                                <li class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"> <span style="color: #000000"><i></i>- HomeCarousel</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"> <a asp-controller="HomeCarousel" asp-action="Index" class="nav-link"> <span style="color: #000000">HomeCarousel</span></a> </li>
+                                        <li class="nav-item"><a asp-controller="HomeCarouselSeo" asp-action="Index" class="nav-link"><span style="color: #000000">HomeCarousel SEO</span></a></li>
+                                        <li class="my-hr"></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="my-hr"></li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"> <span style="color: #000000"><i class="icon-copy"></i>Haqqımızda</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                <li class="nav-item">
+                                    <a asp-controller="About" asp-action="Index" class="nav-link"> <span style="color: #000000">Haqqımızda(Əsas Səhifə)</span></a>
+                                </li>
+                                <li class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"> <span style="color: #000000"><i></i>- Şirkət Haqqında</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"> <a asp-controller="AboutCompany" asp-action="Index" class="nav-link"> <span style="color: #000000">Şirkət Haqqında</span></a> </li>
+                                        <li class="nav-item"><a asp-controller="AboutCompanyCart" asp-action="Index" class="nav-link"><span style="color: #000000">Şirkət Hesabatları</span></a></li>
+                                        <li class="my-hr"></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"> <span style="color: #000000"><i></i>- Mükafatlar</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"> <a asp-controller="Award" asp-action="Index" class="nav-link"> <span style="color: #000000">Mükafatlar</span></a> </li>
+                                        <li class="nav-item"><a asp-controller="AwardSeo" asp-action="Index" class="nav-link"><span style="color: #000000">Mükafatlar SEO</span></a></li>
+                                        <li class="my-hr"></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a asp-controller="Structure" asp-action="Index" class="nav-link"><span style="color: #000000">Struktur</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Report" asp-action="Index" class="nav-link"><span style="color: #000000">Hesabatlar</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="SecondMenu" asp-action="Index" class="nav-link"><span style="color: #000000">Köməkçi Səhifələr</span></a>
+                                </li>
+
+
+                                <li class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"><span style="color: #000000"><i></i>- İdarə heyəti</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"><a asp-controller="ManagementCategory" asp-action="Index" class="nav-link "><span style="color: #000000">İdarə heyəti kateqoriyaları</span>   </a></li>
+                                        <li class="nav-item"><a asp-controller="Management" asp-action="Index" class="nav-link"><span style="color: #000000">İdarə heyəti (Siyahı)</span> </a></li>
+                                        <li class="my-hr"></li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="my-hr"></li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Product" asp-action="Index" class="nav-link"> <span style="color: #000000"><i class="icon-copy"></i>Məhsullar</span></a>
+                        </li>
+                        <li class="my-hr"></li>
+
+                        <li class="nav-item">
+                            <a asp-controller="OnlineService" asp-action="Index" class="nav-link"> <span style="color: #000000"><i class="icon-copy"></i>Online müraciət</span></a>
+                        </li>
+
+                        <li class="my-hr"></li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><span style="color: #000000"><i class="icon-copy"></i> Məlumat Mərkəzi</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                <li class="nav-item">
+                                    <a asp-controller="InformationCenter" asp-action="Index" class="nav-link"><span style="color: #000000">Məlumat Mərkəzi</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="RuleCategory" asp-action="Index" class="nav-link"><span style="color: #000000">Qaydalar Kateqoriya</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="FAQCategory" asp-action="Index" class="nav-link"><span style="color: #000000">FAQ Category</span></a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="my-hr"></li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><span style="color: #000000"><i class="icon-copy"></i>Karyera</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                <li class="nav-item">
+                                    <a asp-controller="Career" asp-action="Index" class="nav-link"> <span style="color: #000000">Karyera</span></a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Vacancy" asp-action="Index" class="nav-link"> <span style="color: #000000">Vakansiyalar</span></a>
+
+                                </li>
+                               
+
+
+                            </ul>
+                        </li>
+                        <li class="my-hr"></li>                     
+                        <li class="nav-item">
+                            <a asp-controller="Contact" asp-action="Index" class="nav-link"><span style="color: #000000"><i class="icon-copy"></i> Əlaqə</span></a>
+                        </li>
+                        <li class="my-hr"></li>
+
+                        <li class="nav-item">
+                            <a asp-controller="URLButton" asp-action="Index" class="nav-link"> <span style="color: #000000"><i class="icon-copy"></i>URL Button</span></a>
+                        </li>
+
+                        <li class="my-hr"></li>
+
+                       
+
+
+
+
+                    </ul>
+                </div>
+                <!-- /main navigation -->
+
+            </div>
+            <!-- /sidebar content -->
+
+        </div>
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /main content -->
+    </div>
+    <style>
+        .nav-item-submenu > .nav-link:after{
+            color: black;
+        }
+    </style>
+
+    <!-- /page content -->
+    @RenderSection("Scripts", false)
+    <style>
+        
+    </style>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+    ClassicEditor
+        .create( document.querySelector( '#AzDescription' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    ClassicEditor
+        .create( document.querySelector( '#RuDescription' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    ClassicEditor
+        .create( document.querySelector( '#EnDescription' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+         ClassicEditor
+        .create( document.querySelector( '#news-detail-description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+          ClassicEditor
+        .create( document.querySelector( '#news-detail-description-ru' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        ClassicEditor
+        .create( document.querySelector( '#news-detail-description-en' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+         ClassicEditor
+        .create( document.querySelector( '#news-detail-description-update' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        ClassicEditor
+        .create( document.querySelector( '#news-detail-description-update-ru' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        ClassicEditor
+        .create( document.querySelector( '#news-detail-description-update-en' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+         ClassicEditor
+        .create( document.querySelector( '#magament-create-az' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+         ClassicEditor
+        .create( document.querySelector( '#magament-create-ru' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+                 ClassicEditor
+        .create( document.querySelector( '#magament-create-en' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+                         ClassicEditor
+        .create( document.querySelector( '#magament-update-az' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+          ClassicEditor
+        .create( document.querySelector( '#magament-update-ru' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+          ClassicEditor
+        .create( document.querySelector( '#magament-update-en' ) )
+        .catch( error => {
+            console.error( error );
+        });
+
+
+
+
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description-ru'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description-en'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description-update'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description-update-ru'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#vacancy-detail-description-update-en'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-update-az'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-update-ru'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-update-en'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-az'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-ru'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#product-detail-description-en'))
+            .catch(error => {
+                console.error(error);
+            });
+       
+        ClassicEditor
+            .create(document.querySelector('#azSeo-desc'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ruSeo-desc'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#enSeo-desc'))
+            .catch(error => {
+                console.error(error);
+            });
+
+</script>
+
+</body>
+</html>
+

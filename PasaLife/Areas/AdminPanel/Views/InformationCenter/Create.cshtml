@@ -1,0 +1,137 @@
+﻿
+@model InformationCenter
+<div class="content text-center">
+    <div class="col-lg-12" style="display: inline-block">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">Məlumat Mərkəzi Yarat</h5>
+                <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                    Go Back
+                </a>
+            </div>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 20%; margin-left: 35%">
+                <label class="btn btn-secondary active language" id="0header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Az
+                </label>
+                <label class="btn btn-secondary language" id="1header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Ru
+                </label>
+                <label class="btn btn-secondary language" id="2header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> En
+                </label>
+            </div>         
+
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form method="post" enctype="multipart/form-data" style="margin-left: 25%">
+
+                    <div class="form-group form-group-float" style="width: 50%">
+                        <label asp-for="Photo" style="display: block">Şəkil</label>
+                        <input type="file" asp-for="Photo" class="form-control" placeholder="Photo">
+                        <span class="text-danger" asp-validation-for="@Model.Image"></span>
+                    </div>
+                    <div class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.AzTitle">Azerbaycan dilində tam adı</label>
+                        <input asp-for="@Model.AzTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.RuTitle">Заголовок на русском языке</label>
+                        <input asp-for="@Model.RuTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.EnTitle">Title in English</label>
+                        <input asp-for="@Model.EnTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnTitle"></span>
+                    </div>
+                    <div class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.AzDescription">Azerbaycan dilində mətn</label>
+                        <textarea asp-for="@Model.AzDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.RuDescription">Текст на русском</label>
+                        <textarea asp-for="@Model.RuDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.EnDescription">Description in English</label>
+                        <textarea asp-for="@Model.EnDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnDescription"></span>
+                    </div>
+                    <div class="form-group form-group-float w-lg-50">
+                        <label asp-for="@Model.URL">URL</label>
+                        <input asp-for="@Model.URL" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.URL"></span>
+                    </div>
+                    <div class="form-group seo-title form-group-float w-lg-50">
+                        <label asp-for="@Model.AzSeoTitle">Azerbaycan dilində SEO başlıq</label>
+                        <input asp-for="@Model.AzSeoTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzSeoTitle"></span>
+                    </div>
+                    <div style="display:none; width: 100%" class="form-group seo-title form-group-float w-lg-50">
+                        <label asp-for="@Model.RuSeoTitle">SEO заголовок на русском языке</label>
+                        <input asp-for="@Model.RuSeoTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuSeoTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group seo-title form-group-float w-lg-50">
+                        <label asp-for="@Model.EnSeoTitle">SEO Title in English</label>
+                        <input asp-for="@Model.EnSeoTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnTitle"></span>
+                    </div>
+                    <div class="form-group seo-desc form-group-float w-lg-50">
+                        <label asp-for="@Model.AzSeoDescription">Azerbaycan dilində SEO mətn</label>
+                        <textarea asp-for="@Model.AzSeoDescription" class="form-control" style="height: 8em" id="azSeo-desc"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzSeoDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group seo-desc form-group-float w-lg-50">
+                        <label asp-for="@Model.RuSeoDescription">SEO Текст на русском</label>
+                        <textarea asp-for="@Model.RuSeoDescription" class="form-control" style="height: 8em" id="ruSeo-desc"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuSeoDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group seo-desc form-group-float w-lg-50">
+                        <label asp-for="@Model.EnSeoDescription">SEO Description in English</label>
+                        <textarea asp-for="@Model.EnSeoDescription" class="form-control" style="height: 8em" id="enSeo-desc"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnSeoDescription"></span>
+                    </div>
+                    <div class="d-flex justify-content-center w-lg-50">
+                        <div class="form-group form-group-float ml-3">
+                            <label>Xəbərlər səhifəsi kimi</label>
+                            <input type="radio" checked name="type" value="news">
+                        </div>
+                        <div class="form-group form-group-float ml-3">
+                            <label>Faq səhifəsi kimi</label>
+                            <input type="radio" name="type" value="faqs">
+                        </div>
+                        <div class="form-group form-group-float ml-3">
+                            <label>Sığorta qaydaları səhifəsi kimi</label>
+                            <input type="radio" name="type" value="rules">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn bg-blue-800" style="margin-right: 50%">Yarat<i class="icon-ml-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+
+
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/js/language.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+
+
+
+}
+
+
+
+
+

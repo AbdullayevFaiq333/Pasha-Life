@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewData["Title"] = "Rəhbərlik";
+    List<ManagementCategory> managementCategories = Model;
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+}
+
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        @if (culture == "az")
+        {
+            <h2>Rəhbərlik</h2>
+
+        }
+        else if (culture == "en")
+        {
+            <h2>Leadership</h2>
+
+        }
+        else if (culture == "ru")
+        {
+            <h2>Лидерство</h2>
+            
+        }
+        <div class="abn_wrap">
+            <div class="about_navigation">
+                <ul>
+                    @foreach (ManagementCategory managementCategory in Model)
+                    {
+                        @if (culture == "az")
+                        {
+
+                            <li><a href="javascript:void(0);" class="scroll_to_e" data-scroll="man-@managementCategory.Id">@managementCategory.AzName</a></li>
+
+                        }
+                        else if (culture == "en")
+                        {
+
+                            <li><a href="javascript:void(0);" class="scroll_to_e" data-scroll="man-@managementCategory.Id">@managementCategory.EnName</a></li>
+                        }
+                        else if (culture == "ru")
+                        {
+
+                            <li><a href="javascript:void(0);" class="scroll_to_e" data-scroll="man-@managementCategory.Id">@managementCategory.RuName</a></li>
+                        }
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="white_background_content static_page_content">
+        @foreach (ManagementCategory managementCategory in Model)
+        {
+            @if (culture == "az")
+            {
+                <div class="reports_item" data-anchor="man-@managementCategory.Id">
+                    <div class="page_section_head">
+                        <h4>@managementCategory.AzName</h4>
+                    </div>
+                    <div class="tabs_for_switcher">
+                        <div class="tab_content active">
+                            <div class="r_content_grid">
+                                @foreach (Management item in managementCategory.Managements)
+                                {
+                                    <div class="person_item">
+                                        <a asp-controller="Management" asp-action="Detail" asp-route-id="@item.Id" class="person_content">
+                                            <div class="person_image" style="background-image:url(images/persons/@item.Image);"></div>
+                                            <div class="person_desc">
+
+                                                <strong>@item.AzFullName</strong>
+                                                <p>@item.AzPosition</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+            else if (culture == "en")
+            {
+                <div class="reports_item" data-anchor="man-@managementCategory.Id">
+                    <div class="page_section_head">
+                        <h4>@managementCategory.EnName</h4>
+                    </div>
+                    <div class="tabs_for_switcher">
+                        <div class="tab_content active">
+                            <div class="r_content_grid">
+                                @foreach (Management item in managementCategory.Managements)
+                                {
+                                    <div class="person_item">
+                                        <a asp-controller="Management" asp-action="Detail" class="person_content">
+                                            <div class="person_image" style="background-image:url(images/@item.Image);"></div>
+                                            <div class="person_desc">
+
+                                                <strong>@item.EnFullName</strong>
+                                                <p>@item.EnPosition</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            else if (culture == "ru")
+            {
+                <div class="reports_item" data-anchor="man-@managementCategory.Id">
+                    <div class="page_section_head">
+                        <h4>@managementCategory.RuName</h4>
+                    </div>
+                    <div class="tabs_for_switcher">
+                        <div class="tab_content active">
+                            <div class="r_content_grid">
+                                @foreach (Management item in managementCategory.Managements)
+                                {
+                                    <div class="person_item">
+                                        <a asp-controller="Management" asp-action="Detail" class="person_content">
+                                            <div class="person_image" style="background-image:url(images/@item.Image);"></div>
+                                            <div class="person_desc">
+
+                                                <strong>@item.RuFullName</strong>
+                                                <p>@item.RuPosition</p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+
+
+    </div>
+
+        @await Component.InvokeAsync("Footer")
+
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+
+
+
+
+
+

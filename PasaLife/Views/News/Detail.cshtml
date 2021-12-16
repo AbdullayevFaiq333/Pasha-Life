@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Xəbərlər";
+    NewsDetail newsDetail =Model;
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+}
+
+<div class="page_content total_page">
+    <div class="static_page_header">
+        <div class="news_date">@newsDetail.New.DateTime.ToString("dd MMMM yyyy")</div>
+        @if (culture == "az")
+        {
+            <h3>@newsDetail.New.AzTitle</h3>
+
+        }
+        else if (culture == "en")
+        {
+            <h3>@newsDetail.New.EnTitle</h3>
+
+        }
+        else if (culture == "ru")
+        {
+            <h3>@newsDetail.New.RuTitle</h3>
+
+        }
+    </div>
+
+    <div class="white_background_content static_page_content">
+        @if (culture == "az")
+        {
+            <p>@Html.Raw(Model.AzDescription)</p>
+
+        }
+        else if (culture == "en")
+        {
+            <p>@Html.Raw(Model.EnDescription)</p>
+
+        }
+        else if (culture == "ru")
+        {
+            <p>@Html.Raw(Model.RuDescription)</p>
+
+        }
+    </div>
+
+        @await Component.InvokeAsync("Footer")
+    
+</div>
+
+<div class="page_background">
+    <video muted loop class="video" autoplay playsinline>
+        <source src="~/video/background.mp4" type="video/mp4" />
+    </video>
+</div>
+
+<div class="assistant_wrap">
+    <div class="eye"><img src="~/images/asistent.png" /></div>
+    <div class="eye_animated">
+        <video autoplay="autoplay" muted="muted" loop="loop" data-v-a95f347a="">
+            <source src="~/video/eye.mov" type="video/mp4; codecs='hvc1'">
+            <source src="~/video/eye.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+

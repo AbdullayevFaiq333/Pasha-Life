@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Product product = Model;
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Məhsullar Ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @product.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ikinci Başlıq</th>
+                            <td>
+                                @product.AzTitle2
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(product.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ikinci Mətn</th>
+                            <td>
+                                @Html.Raw(product.AzDetailDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @product.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Второй Заголовок</th>
+                            <td>
+                                @product.RuTitle2
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(product.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Второй Текст</th>
+                            <td>
+                                @Html.Raw(product.RuDetailDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @product.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Second Title</th>
+                            <td>
+                                @product.EnTitle2
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(product.EnDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Second Description</th>
+                            <td>
+                                @Html.Raw(product.EnDetailDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">VideoUrl</th>
+                            <td>
+                                @product.VideoUrl
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@product.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

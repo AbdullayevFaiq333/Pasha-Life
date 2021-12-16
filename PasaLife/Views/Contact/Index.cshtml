@@ -1,0 +1,133 @@
+﻿
+@model ContactModel
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    
+    ViewData["Title"] = "Əlaqə";
+
+}
+<div class="modal" data-modal="order">
+		<div class="modal_content contacs_pp">
+			<button class="close_modal_mobile"></button>
+			<div class="cpp_head">
+				<strong>MƏSUL ŞƏXS</strong>
+			</div>
+			<div class="contacts_text">
+				<article>
+					<h3>Sığortaçıdan və ya onun hər hansısa əməkdaşından şikayət etmək üçün:</h3>
+					<p>Günel Abbasova</p>
+					<p>E-mail: complaints@pasha-life.az</p>
+					<p>Mob: (+994 51) 207 55 18</p>
+				</article>
+				<article>
+					<h3>Müştərilərin qəbulu:</h3>
+					<p>Müştəri rəhbərliyin qəbuluna əvvəlcədən yazılmaq istədiyi hallarda, İdarə Heyətinin sədri və İdarə Heyəti üzvünün qəbul günləri aşağıdakı qaydada müəyyən edilir :</p>
+				</article>
+				<article>
+					<h3>Kurasiya üzrə İdarə Heyətinin üzvü:</h3>
+					<p>hər həftənin cümə günü saat 11:00-da (sığorta hadisəsi və sığorta ödənişi ilə bağlı məsələlər üzrə);</p>
+				</article>
+				<article>
+					<h3>İdarə Heyətinin sədri:</h3>
+					<p>hər ayın birinci həftəsinin cümə axşamı günü saat 11:00-da (digər məsələlər üzrə).</p>
+					<p>Müştərinin müraciəti ilə əlaqədar təxirəsalınmaz tədbirlərin görülməsi tələb edildikdə, müştəri qəbul günündə növbədənkənar qəbul edilir. Həmçinin, aşağıda göstərilən şəxslərin qəbulu növbədənkənar həyata keçirilir:</p>
+					<p>I dərəcə əlilliyi olan şəxşlər</p>
+					<p>Çernobıl AES-dəki qəza ilə əlaqədar əlillik almış şəxslər</p>
+					<p>Sağlamlıq imkanları məhdud uşaqlar (valideyn və ya digər qanuni nümayəndə ilə birlikdə)</p>
+					<p>20 Yanvar hadisələri, Qarabağ müharibəsi, habelə hərbi xidmət və hərbi əməliyyatlarla əlaqədar əlillik almış şəxslər</p>
+					<p>Vətən müharibəsinin iştirakçısı olan qazilər</p>
+					<p>Şəhid ailələri</p>
+				</article>
+				<article>
+					<h4>Qeyd: Ölkədəki karantin tədbirlərinə uyğun olaraq fiziki təmasın minimuma endirilməsi məqsədilə görüşlərin onlayn şəkildə keçirilməsi nəzərdə tutulur. Ətraflı məlumat: (012) 942</h4>
+				</article>				
+			</div>
+
+			
+		</div>
+		<button class="modal_bg"></button>
+	</div>
+
+<div class="page_content contacts_page">
+    <div class="mid_content">
+        <div class="mid_wrap">
+            <div class="center_wrap">
+                @if (culture == "az")
+                {
+                    <h2><span>@Model.AzTitle</span></h2>
+                    <p>@Html.Raw(Model.AzDescription)</p>
+                    <ul class="contacts_line">
+                        <li>
+                            <span>Ünvan</span>
+                            <p>@Model.AzAddress</p>
+                        </li>
+                        <li>
+                            <span>Əlaqə nömrəsi</span>
+                            <p>@Model.ContactNumber</p>
+                        </li>
+                    </ul>
+
+                }
+                else if (culture == "en")
+                {
+                    <h2><span>@Model.EnTitle</span></h2>
+                    <p>@Html.Raw(Model.EnDescription)</p>
+                    <ul class="contacts_line">
+                        <li>
+                            <span>Address</span>
+                            <p>@Model.EnAddress</p>
+                        </li>
+                        <li>
+                            <span>Contact number</span>
+                            <p>@Model.ContactNumber</p>
+                        </li>
+                    </ul>
+
+                }
+                else if (culture == "ru")
+                {
+                    <h2><span>@Model.RuTitle</span></h2>
+                    <p>@Html.Raw(Model.RuDescription)</p>
+                    <ul class="contacts_line">
+                        <li>
+                            <span>Адрес</span>
+                            <p>@Model.RuAddress</p>
+                        </li>
+                        <li>
+                            <span>Контактный телефон</span>
+                            <p>@Model.ContactNumber</p>
+                        </li>
+                    </ul>
+
+                }  
+                    @if (culture == "az")
+                    {
+                            <a asp-controller="Contact" asp-action="ContactForm" class="white_button open_modal" >Bizə yazın</a>
+                            <button class="text_button open_modal" data-modal="order" >Məsul şəxs</button>
+                    }
+                    else if (culture == "en")
+                    {
+                            <a asp-controller="Contact" asp-action="ContactForm" class="white_button open_modal" >Write to us</a>
+                            <button class="text_button open_modal" data-modal="order" >The person in charge</button>
+
+                    }
+                    else if (culture == "ru")
+                    {
+                            <a asp-controller="Contact" asp-action="ContactForm" class="white_button open_modal" >Напишите нам</a>
+                            <button class="text_button open_modal" data-modal="order" >Ответственное лицо</button>
+                    }
+                    
+            </div>
+        </div>
+    </div>
+        @await Component.InvokeAsync("Footer")
+     
+</div>
+<div class="contacts_background">
+    <video muted class="video" autoplay playsinline>
+        <source src="~/video/contacts.mp4" type="video/mp4" />
+    </video>
+</div>
+
+
+
