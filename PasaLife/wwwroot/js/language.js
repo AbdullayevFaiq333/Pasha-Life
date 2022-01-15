@@ -12,6 +12,7 @@
             var fourthBodies = $('.fourth-body');
             var seoTitles = $('.seo-title');
             var seoDescs = $('.seo-desc');
+         
 
             for (var i = 0; i < bodyLanguages.length; i++) {
                 $(bodyLanguages[i]).hide();
@@ -20,7 +21,9 @@
                 $(fourthBodies[i]).hide();
                 $(seoTitles[i]).hide();
                 $(seoDescs[i]).hide();
+           
             }
+
 
             console.log('Entered')
             $(fourthBodies[id]).show();
@@ -32,6 +35,7 @@
             $(headerBodies[id]).show();
             $(seoTitles[id]).show();
             $(seoDescs[id]).show();
+        
 
 
         });

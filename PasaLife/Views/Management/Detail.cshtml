@@ -1,8 +1,21 @@
 ﻿
 @{
-    ViewData["Title"] = "Rəhbərlik";
-    ManagementDetail managementDetail = Model;
+    
+    ManagementDetailViewModel managementDetailViewModel = Model;
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Rəhbərlik";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Leadership";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Лидерство";
+        }
 
 }
 <div class="page_content total_page">
@@ -22,37 +35,62 @@
             <h2>Лидерство</h2>
             
         }
-    </div>
+        <div class="about_navigation">
+                <ul>
+                    @foreach (ManagementCategory managementCategory in managementDetailViewModel.ManagementCategories)
+                    {
+                        @if (culture == "az")
+                        {
 
+                            <li><a asp-controller="Management" asp-action="Index">@managementCategory.AzName</a></li>
+
+                        }
+                        else if (culture == "en")
+                        {
+
+                            <li><a asp-controller="Management" asp-action="Index">@managementCategory.EnName</a></li>
+                        }
+                        else if (culture == "ru")
+                        {
+
+                            <li><a asp-controller="Management" asp-action="Index">@managementCategory.RuName</a></li>
+                        }
+
+                    }
+
+                </ul>
+            </div>
+    </div>
+    
     <div class="white_background_content static_page_content">
         <div class="reports_item" data-anchor="management">
             <div class="management_item">
                 <div class="image">
-                    <img src="~/images/persons/@managementDetail.Management.Image" alt="">
+                    <img src="~/images/persons/@managementDetailViewModel.ManagementDetail.Management.Image" alt="">
                 </div>
                 <div class="inner">
                     @if (culture == "az")
                     {
-                        <h3>@managementDetail.Management.AzFullName</h3>
-                        <h4>@managementDetail.Management.AzPosition</h4>
+                        <h3>@managementDetailViewModel.ManagementDetail.Management.AzFullName</h3>
+                        <h4>@managementDetailViewModel.ManagementDetail.Management.AzPosition</h4>
                         <div class="text">
-                            <p>@Html.Raw(managementDetail.AzDescription)</p>
+                            <p>@Html.Raw(managementDetailViewModel.ManagementDetail.AzDescription)</p>
                         </div>
                     }
                     else if (culture == "en")
                     {
-                        <h3>@managementDetail.Management.RuFullName</h3>
-                        <h4>@managementDetail.Management.RuPosition</h4>
+                        <h3>@managementDetailViewModel.ManagementDetail.Management.RuFullName</h3>
+                        <h4>@managementDetailViewModel.ManagementDetail.Management.RuPosition</h4>
                         <div class="text">
-                            <p>@Html.Raw(managementDetail.RuDescription)</p>
+                            <p>@Html.Raw(managementDetailViewModel.ManagementDetail.RuDescription)</p>
                         </div>
                     }
                     else if (culture == "ru")
                     {
-                        <h3>@managementDetail.Management.EnFullName</h3>
-                        <h4>@managementDetail.Management.EnPosition</h4>
+                        <h3>@managementDetailViewModel.ManagementDetail.Management.EnFullName</h3>
+                        <h4>@managementDetailViewModel.ManagementDetail.Management.EnPosition</h4>
                         <div class="text">
-                            <p>@Html.Raw(managementDetail.EnDescription)</p>
+                            <p>@Html.Raw(managementDetailViewModel.ManagementDetail.EnDescription)</p>
                         </div>
                     }
 
@@ -65,7 +103,9 @@
 
     </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

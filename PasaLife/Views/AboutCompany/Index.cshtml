@@ -3,7 +3,18 @@
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
     
-    ViewData["Title"] = "Şirkət Haqqında";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Şirkət Haqqında";
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "About The Company";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "О Компании";
+        }
 
 }
 
@@ -113,7 +124,9 @@
            }
         </div>
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 
 </div>

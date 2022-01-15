@@ -3,7 +3,19 @@
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
 
-    ViewData["Title"] = "Hesabatlar";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Hesabatlar";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Reports";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Отчеты";
+        }
     bool IsTrueCat = true;
     bool IsTrueRep = true;
 }
@@ -62,7 +74,8 @@
                         }
                         else if (culture == "ru")
                         {
-                            <li><button  class=" @(IsTrueCat?"active":"")"  data-tab="cat-@item.Id)">@item.RuName</button></li>
+                             <li><button class=" @(IsTrueCat?"active":"")"  data-tab="cat-@item.Id">@item.RuName</button></li>
+
 
                         }
                         IsTrueCat = false;
@@ -83,7 +96,7 @@
                                {
                                    
                                   <div class="report_item"  >
-                                    <a href="#" class="report_link" target="_blank">
+                                    <a href="~/files/@report.FileName" class="report_link" target="_blank">
                                         <div class="report_top">
                                             <div class="file_format">PDF</div>
                                             <div class="rp_y">@report.Year</div>
@@ -105,7 +118,7 @@
                                 @foreach (var report in item.Reports)
                                 {
                                     <div class="report_item">
-                                    <a href="#" class="report_link" target="_blank">
+                                    <a href="~/files/@report.FileName" class="report_link" target="_blank">
                                         <div class="report_top">
                                             <div class="file_format">PDF</div>
                                             <div class="rp_y">@report.Year</div>
@@ -121,12 +134,13 @@
                     }
                     else if (culture == "ru")
                     {
-                        <div class="tab_content @(IsTrueRep?"active":"")" data-tab="cat-@item.Id">
+                        <div class="tab_content @(IsTrueRep?"active":"")" data-tab="cat-@item.Id" >
                             <div class="r_content_grid">
                                 @foreach (var report in item.Reports)
-                                {
-                                   <div class="report_item">
-                                    <a href="#" class="report_link" target="_blank">
+                               {
+                                   
+                                  <div class="report_item"  >
+                                    <a href="~/files/@report.FileName" class="report_link" target="_blank">
                                         <div class="report_top">
                                             <div class="file_format">PDF</div>
                                             <div class="rp_y">@report.Year</div>
@@ -135,8 +149,9 @@
                                         <p>@report.Size.ToUpper()</p>
                                     </a>
                                 </div> 
-                                }
 
+                               }
+                                
                             </div>
                         </div>
                     }
@@ -148,7 +163,9 @@
             </div>
         </div>
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 
 </div>

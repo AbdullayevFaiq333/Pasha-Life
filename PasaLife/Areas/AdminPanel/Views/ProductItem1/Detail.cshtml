@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ProductItem1 productItem1s = Model;
+}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Product Item 1 ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @productItem1s.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(productItem1s.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @productItem1s.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(productItem1s.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @productItem1s.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(productItem1s.EnDescription)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Qutudakı mətn</th>
+                            <td>
+                                @Html.Raw(productItem1s.AzDescriptionBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tекст в поле</th>
+                            <td>
+                                @Html.Raw(productItem1s.RuDescriptionBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Text in the box</th>
+                            <td>
+                                @Html.Raw(productItem1s.EnDescriptionBox)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Sitat</th>
+                            <td>
+                                @Html.Raw(productItem1s.AzInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Цитировать</th>
+                            <td>
+                                @Html.Raw(productItem1s.RuInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Quote</th>
+                            <td>
+                                @Html.Raw(productItem1s.EnInfo)
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <th scope="row">Ad</th>
+                            <td>
+                                @productItem1s.Name
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vəzifə</th>
+                            <td>
+                                @productItem1s.AzWork
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Позиция</th>
+                            <td>
+                                @productItem1s.RuWork
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Position</th>
+                            <td>
+                                @productItem1s.EnWork
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sonuncu Mətn</th>
+                            <td>
+                                @Html.Raw(productItem1s.AzEndDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Последний Текст</th>
+                            <td>
+                                @Html.Raw(productItem1s.RuEndDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Last Text</th>
+                            <td>
+                                @Html.Raw(productItem1s.EnEndDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@productItem1s.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+

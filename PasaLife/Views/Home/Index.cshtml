@@ -1,8 +1,19 @@
 ﻿@model HomeViewModel
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-    
-    ViewData["Title"] = "Ana Səhifə";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Paşa Həyat";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Pasha Life";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Паша Лайф";
+        }
 
 }
 
@@ -135,7 +146,11 @@
       </div>
     
 </div>
+<footer>
+        <a href="tel:+99412942" class="call_us"><span>942</span></a>
         @await Component.InvokeAsync("Footer")
+
+</footer>
 </div>
 <div class="page_background">
     <video muted loop class="video" autoplay playsinline>

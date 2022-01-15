@@ -32,7 +32,10 @@ namespace PasaLife.Controllers
                 Reports = reports,
                 ReportCategories=reportCategories
             };
+
+
             return View(reportViewModel);
         }
+        
     }
 }

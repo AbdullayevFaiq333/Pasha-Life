@@ -2,7 +2,20 @@
 @model List<InformationCenter>
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-    ViewData["Title"] = "Məlumat mərkəzi";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Məlumat mərkəzi";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Information Center";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Информационный Центр";
+        }
+    
 }
 
 <div class="page_content total_page">
@@ -54,7 +67,9 @@
 
         </div>
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

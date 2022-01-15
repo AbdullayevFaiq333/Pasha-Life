@@ -2,8 +2,18 @@
 @{
     VacancyDetail vacancyDetail =Model;
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-
-    ViewData["Title"] = "Karyera";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Karyera";
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Career";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Карьера";
+        }
 }
 
 <div class="page_content total_page">
@@ -75,7 +85,9 @@
         }
     
 
+       <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
     
 </div>
 

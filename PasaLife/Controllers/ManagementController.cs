@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PasaLife.DAL;
 using PasaLife.Models;
+using PasaLife.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace PasaLife.Controllers
                                                                      .Where(x => x.IsDeactive == false)
                                                                      .Include(x => x.Managements)
                                                                      .ThenInclude(x=>x.ManagementDetail)
+                                                                     .Include(x => x.ManagementFaqs)
                                                                      .ToListAsync();
 
             return View(managementCategories);
@@ -33,7 +35,7 @@ namespace PasaLife.Controllers
                 return NotFound();
 
             var managementDetail = await _db.ManagementDetail.Include(x=>x.Management).FirstOrDefaultAsync(z => z.ManagementId == id);
-
+            var managementCategories = await _db.ManagementCategories.ToListAsync();
             if (managementDetail == null)
                 return NotFound();
 
@@ -44,7 +46,13 @@ namespace PasaLife.Controllers
             ViewBag.RuSeoDescription = managementDetail.RuSeoDescription;
             ViewBag.EnSeoDescription = managementDetail.EnSeoDescription;
 
-            return View(managementDetail);
+            ManagementDetailViewModel managementDetailViewModel = new ManagementDetailViewModel
+            {
+                ManagementCategories = managementCategories,
+                ManagementDetail = managementDetail,
+            };
+
+            return View(managementDetailViewModel);
         }
     }
 }

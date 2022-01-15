@@ -8,7 +8,22 @@
 
 <div class="page_content total_page">
     <div class="static_page_header">
-        <h2>Frequently asked questions</h2>
+        @if (culture == "az")
+        {
+                            <h2>Tez-tez soruşulan suallar</h2>
+
+
+        }
+        else if (culture == "en")
+        {
+                            <h2>Frequently asked questions</h2>
+
+        }
+        else if (culture == "ru")
+        {
+                            <h2>Часто задаваемые вопросы</h2>
+
+        }
     </div>
 
     <div class="white_background_content static_page_content">
@@ -63,7 +78,9 @@
         </div>
     </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

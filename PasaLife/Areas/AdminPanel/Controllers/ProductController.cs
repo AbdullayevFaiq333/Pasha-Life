@@ -39,7 +39,13 @@ namespace PasaLife.Areas.AdminPanel.Controllers
                                             .Include(x => x.ProductDetailTitle)
                                             .Include(x => x.ProductInformation)
                                             .Include(x => x.SimpleProduct)
-                                            .Include(x=>x.ProductWords).ToListAsync();
+                                            .Include(x=>x.ProductWords)
+                                            .Include(x=>x.ProductItem1)
+                                            .Include(x=>x.ProductItem2)
+                                            .Include(x => x.ProductItem3)
+                                            .Include(x => x.ProductItem4)
+                                            .Include(x => x.ProductItem5)
+                                            .ToListAsync();
             //var temp = products[products.Count - 1].ProductDetailTitle;
             //foreach (var product in products)
             //{
@@ -68,7 +74,7 @@ namespace PasaLife.Areas.AdminPanel.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( Product Product,bool isSimple)
+        public async Task<IActionResult> Create( Product Product, string type)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -96,8 +102,8 @@ namespace PasaLife.Areas.AdminPanel.Controllers
                 string folderv = Path.Combine(_env.WebRootPath, "video");
                 Product.Video = await FileUtil.SaveFileAsync(folderv, Product.VideoFile);
             }
-              
-            Product.IsSimple = isSimple;
+
+            Product.Type = type;
             await _db.Products.AddAsync(Product);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -244,6 +250,17 @@ namespace PasaLife.Areas.AdminPanel.Controllers
 
             var productWord = await _db.ProductWords.Where(x => x.ProductId == id).ToListAsync();
             _db.RemoveRange(productWord);
+            
+            var productItem1s = await _db.ProductItem1s.Where(x => x.ProductId == id).ToListAsync();
+            _db.RemoveRange(productItem1s);
+            var productItem2s = await _db.ProductItem1s.Where(x => x.ProductId == id).ToListAsync();
+            _db.RemoveRange(productItem2s);
+            var productItem3s = await _db.ProductItem1s.Where(x => x.ProductId == id).ToListAsync();
+            _db.RemoveRange(productItem3s);
+            var productItem4s = await _db.ProductItem4s.Where(x => x.ProductId == id).ToListAsync();
+            _db.RemoveRange(productItem4s);
+            var productItem5s = await _db.ProductItem5s.Where(x => x.ProductId == id).ToListAsync();
+            _db.RemoveRange(productItem5s);
 
 
 

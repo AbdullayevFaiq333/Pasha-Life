@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ProductItem2 productItem2s = Model;
+}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Product Item 2 ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive"> 
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @productItem2s.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(productItem2s.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @productItem2s.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(productItem2s.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @productItem2s.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(productItem2s.EnDescription)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Qutudakı mətn</th>
+                            <td>
+                                @Html.Raw(productItem2s.AzTitleBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст в поле</th>
+                            <td>
+                                @Html.Raw(productItem2s.RuTitleBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Text in the box</th>
+                            <td>
+                                @Html.Raw(productItem2s.EnTitleBox)
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th scope="row">Birinci Icon</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@productItem2s.FirstBoxIcon" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Birinci qutu mətni</th>
+                            <td>
+                                @Html.Raw(productItem2s.AzFirstBoxInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст первого поля</th>
+                            <td>
+                                @Html.Raw(productItem2s.RuFirstBoxInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">The text of the First box</th>
+                            <td>
+                                @Html.Raw(productItem2s.EnFirstBoxInfo)
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th scope="row">İkinci Icon</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@productItem2s.SecondBoxIcon" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">İkinci qutu mətni</th>
+                            <td>
+                                @Html.Raw(productItem2s.AzSecondBoxInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст второго поля</th>
+                            <td>
+                                @Html.Raw(productItem2s.RuSecondBoxInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">The text of the Second box</th>
+                            <td>
+                                @Html.Raw(productItem2s.EnSecondBoxInfo)
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th scope="row">Şəkildəki başlıq </th>
+                            <td>
+                                @productItem2s.AzImageTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок на картинке</th>
+                            <td>
+                                @productItem2s.RuImageTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title in the picture</th>
+                            <td>
+                                @productItem2s.EnImageTitle
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Şərtlər </th>
+                            <td>
+                                @Html.Raw(productItem2s.AzCondition)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Условиe</th>
+                            <td>
+                                @Html.Raw(productItem2s.RuCondition)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Condition</th>
+                            <td>
+                                @Html.Raw(productItem2s.EnCondition)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@productItem2s.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+

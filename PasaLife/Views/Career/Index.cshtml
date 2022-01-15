@@ -1,8 +1,19 @@
 ﻿@model CareerViewModel
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-
-    ViewData["Title"] = "Karyera";
+       @if (culture == "az")
+        {
+                ViewData["Title"] = "Karyera";
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Career";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Карьера";
+        }
+    
 }
 
 <div class="video_modal">
@@ -148,7 +159,9 @@
         </div>
 
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
     
 </div>
 

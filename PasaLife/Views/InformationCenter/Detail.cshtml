@@ -1,19 +1,47 @@
 ﻿@model InformationVM
 @{
-    ViewBag.Title = "Melumat Merkezi";
+    
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Məlumat mərkəzi";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Information Center";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Информационный Центр";
+        }
 }
 @if (Model.Type=="faqs")
 {
     <div class="page_content total_page">
         <div class="static_page_header">
-            <h2>Frequently asked questions</h2>
+            @if (culture == "az")
+        {
+                            <h2>Tez-tez soruşulan suallar</h2>
+
+
+        }
+        else if (culture == "en")
+        {
+                            <h2>Frequently asked questions</h2>
+
+        }
+        else if (culture == "ru")
+        {
+                            <h2>Часто задаваемые вопросы</h2>
+
+        }
         </div>
 
         <div class="white_background_content static_page_content">
             @foreach (var item in Model.FAQCategories)
             {
-                @if (culture == "az")
+                @if (culture == "az" )
                 {
                     <div class="faq">
                         <h3>@item.AzTitle</h3>
@@ -165,12 +193,17 @@ else if (Model.Type == "rules")
                                 @foreach (var rule in item.Rules)
                                 {
                                     <li>
-                                        <a href="#" class="file pdf">
+                                        <a href="~/files/@rule.FileName" target="_blank" class="file pdf">
                                             <p>@rule.AzName</p>
-                                            <span>@rule.Size</span>
+                                            @{ 
+                                                var size = @rule.Size.Substring(0, 4) + " MB";
+                                            }
+                                            <span>@size</span>
+
+
                                         </a>
                                     </li>
-                                }
+                                                }
 
                             </ul>
                         </div>
@@ -185,9 +218,14 @@ else if (Model.Type == "rules")
                                 @foreach (var rule in item.Rules)
                                 {
                                     <li>
-                                        <a href="#" class="file pdf">
+                                        <a href="~/files/@rule.FileName" target="_blank" class="file pdf">
                                             <p>@rule.EnName</p>
-                                            <span>@rule.Size</span>
+                                            @{
+                                                var size = @rule.Size.Substring(0, 4) + " MB";
+                                            }
+                                            <span>@size</span>
+
+
                                         </a>
                                     </li>
                                 }
@@ -203,9 +241,12 @@ else if (Model.Type == "rules")
                                 @foreach (var rule in item.Rules)
                                 {
                                     <li>
-                                        <a href="#" class="file pdf">
+                                        <a href="~/files/@rule.FileName" target="_blank" class="file pdf">
                                             <p>@rule.RuName</p>
-                                            <span>@rule.Size</span>
+                                            @{
+                                                var size = @rule.Size.Substring(0, 4) + " MB";
+                                            }
+                                            <span>@size</span>
                                         </a>
                                     </li>
                                 }
@@ -220,7 +261,9 @@ else if (Model.Type == "rules")
             </div>
         </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
        
     </div>
 }

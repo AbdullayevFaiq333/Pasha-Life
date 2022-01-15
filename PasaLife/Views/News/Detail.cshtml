@@ -1,8 +1,21 @@
 ﻿
 @{
-    ViewData["Title"] = "Xəbərlər";
+    
     NewsDetail newsDetail =Model;
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Xəbərlər";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "News";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Новости";
+        }
 
 }
 
@@ -44,7 +57,9 @@
         }
     </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
     
 </div>
 

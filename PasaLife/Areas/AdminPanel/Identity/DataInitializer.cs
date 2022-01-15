@@ -41,7 +41,7 @@ namespace PasaLife.Areas.AdminPanel.Identity
             }
             var user = new User
             {
-                Email = "admin@admin.az",
+                Email = "pashalife@pashalife.az",
                 UserName = "Admin",
                 Name = "Admin",
                 Surname = "Adminov",
@@ -49,7 +49,7 @@ namespace PasaLife.Areas.AdminPanel.Identity
             };
             var user2 = new User
             {
-                Email = "moderator@moderator.az",
+                Email = "pashalife@pashalife2.az",
                 UserName = "Moderator",
                 Name = "Moderator",
                 Surname = "Moderator",
@@ -57,14 +57,14 @@ namespace PasaLife.Areas.AdminPanel.Identity
             };
             if (await _userManager.FindByEmailAsync(user.Email) == null)
             {
-                await _userManager.CreateAsync(user, "Admin@123");
+                await _userManager.CreateAsync(user, "Pashalife@123");
                 await _userManager.AddToRoleAsync(user, RoleConstants.AdminRole);
                 
 
             }
             if (await _userManager.FindByEmailAsync(user2.Email) == null)
             {
-                await _userManager.CreateAsync(user2, "Moderator@123");
+                await _userManager.CreateAsync(user2, "Pashalife2@123");
                 await _userManager.AddToRoleAsync(user2, RoleConstants.ModeratorRole);
 
             }

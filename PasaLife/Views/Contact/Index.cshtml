@@ -3,7 +3,19 @@
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
     
-    ViewData["Title"] = "Əlaqə";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Əlaqə";
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Contact";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Контакт";
+        }
+    
 
 }
 <div class="modal" data-modal="order">
@@ -120,7 +132,9 @@
             </div>
         </div>
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
      
 </div>
 <div class="contacts_background">

@@ -43,6 +43,7 @@ namespace PasaLife.Models
         public string Video { get; set; }
         public bool IsDeactive { get; set; }
         public bool IsSimple { get; set; }
+        
 
 
         public List<ProductChart> ProductCharts { get; set; }
@@ -53,6 +54,13 @@ namespace PasaLife.Models
         public ProductInformation ProductInformation { get; set; }
         public ProductDetailTitle ProductDetailTitle { get; set; }
         public List<ProductWord> ProductWords { get; set; }
+        public ProductItem1 ProductItem1 { get; set; }
+        public ProductItem2 ProductItem2 { get; set; }
+        public ProductItem3 ProductItem3 { get; set; }
+        public ProductItem4 ProductItem4 { get; set; }
+        public ProductItem5 ProductItem5 { get; set; }
+        public string Type { get; set; }
+
 
         [NotMapped]
         public IFormFile VideoFile { get; set; }

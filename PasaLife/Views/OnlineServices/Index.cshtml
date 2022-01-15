@@ -2,7 +2,20 @@
 @model List<OnlineService>
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-    ViewData["Title"] = "OnlineServices";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Onlayn Xidmətlər";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Online Services";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Онлайн Сервисы";
+        }
+   
 }
 
 <div class="page_content total_page">
@@ -81,7 +94,9 @@
 			  </div>
         </div>
     </div>
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

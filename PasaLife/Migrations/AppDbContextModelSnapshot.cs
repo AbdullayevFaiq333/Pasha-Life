@@ -1012,6 +1012,14 @@ namespace PasaLife.Migrations
                             EnName = "Counsel of Directors",
                             IsDeactive = false,
                             RuName = "Совет директоров2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AzName = "Digər komitələr",
+                            EnName = "Other committees",
+                            IsDeactive = false,
+                            RuName = "Другие комитеты"
                         });
                 });
 
@@ -1049,6 +1057,44 @@ namespace PasaLife.Migrations
                         .IsUnique();
 
                     b.ToTable("ManagementDetail");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ManagementFaq", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ManagementCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ManagementCategoryId");
+
+                    b.ToTable("ManagementFaqs");
                 });
 
             modelBuilder.Entity("PasaLife.Models.Navbar", b =>
@@ -1364,6 +1410,9 @@ namespace PasaLife.Migrations
                     b.Property<string>("RuTitle2")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Video")
                         .HasColumnType("nvarchar(max)");
 
@@ -1516,6 +1565,423 @@ namespace PasaLife.Migrations
                         .IsUnique();
 
                     b.ToTable("ProductInformations");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem1", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzEndDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzWork")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnEndDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnWork")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuEndDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuWork")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductItem1s");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzCondition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzFirstBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzSecondBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitleBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnCondition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnFirstBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnSecondBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitleBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstBoxIcon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuCondition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuFirstBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuSecondBoxInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitleBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondBoxIcon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductItem2s");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem3", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzDescription2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzThirdDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzThirdTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnThirdDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnThirdTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuDescription2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuThirdDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuThirdTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductItem3s");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem4", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductItem4s");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem5", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AzDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AzTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RuDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuDescriptionBox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuPhoneInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuSecondDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuSecondTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RuTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.ToTable("ProductItem5s");
                 });
 
             modelBuilder.Entity("PasaLife.Models.ProductWord", b =>
@@ -2210,6 +2676,17 @@ namespace PasaLife.Migrations
                     b.Navigation("Management");
                 });
 
+            modelBuilder.Entity("PasaLife.Models.ManagementFaq", b =>
+                {
+                    b.HasOne("PasaLife.Models.ManagementCategory", "ManagementCategory")
+                        .WithMany("ManagementFaqs")
+                        .HasForeignKey("ManagementCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ManagementCategory");
+                });
+
             modelBuilder.Entity("PasaLife.Models.New", b =>
                 {
                     b.HasOne("PasaLife.Models.InformationCenter", "InformationCenter")
@@ -2266,6 +2743,61 @@ namespace PasaLife.Migrations
                     b.HasOne("PasaLife.Models.Product", "Product")
                         .WithOne("ProductInformation")
                         .HasForeignKey("PasaLife.Models.ProductInformation", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem1", b =>
+                {
+                    b.HasOne("PasaLife.Models.Product", "Product")
+                        .WithOne("ProductItem1")
+                        .HasForeignKey("PasaLife.Models.ProductItem1", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem2", b =>
+                {
+                    b.HasOne("PasaLife.Models.Product", "Product")
+                        .WithOne("ProductItem2")
+                        .HasForeignKey("PasaLife.Models.ProductItem2", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem3", b =>
+                {
+                    b.HasOne("PasaLife.Models.Product", "Product")
+                        .WithOne("ProductItem3")
+                        .HasForeignKey("PasaLife.Models.ProductItem3", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem4", b =>
+                {
+                    b.HasOne("PasaLife.Models.Product", "Product")
+                        .WithOne("ProductItem4")
+                        .HasForeignKey("PasaLife.Models.ProductItem4", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("PasaLife.Models.ProductItem5", b =>
+                {
+                    b.HasOne("PasaLife.Models.Product", "Product")
+                        .WithOne("ProductItem5")
+                        .HasForeignKey("PasaLife.Models.ProductItem5", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2354,6 +2886,8 @@ namespace PasaLife.Migrations
 
             modelBuilder.Entity("PasaLife.Models.ManagementCategory", b =>
                 {
+                    b.Navigation("ManagementFaqs");
+
                     b.Navigation("Managements");
                 });
 
@@ -2380,6 +2914,16 @@ namespace PasaLife.Migrations
                     b.Navigation("ProductDetailTitle");
 
                     b.Navigation("ProductInformation");
+
+                    b.Navigation("ProductItem1");
+
+                    b.Navigation("ProductItem2");
+
+                    b.Navigation("ProductItem3");
+
+                    b.Navigation("ProductItem4");
+
+                    b.Navigation("ProductItem5");
 
                     b.Navigation("ProductWords");
 

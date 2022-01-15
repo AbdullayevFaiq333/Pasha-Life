@@ -203,3 +203,21 @@ $(document).ready(function () {
 		}).on('mouseleave', '.b_content', function (e) {
 				$(".assistant_wrap").removeAttr("style")
 		});*/
+
+
+
+/* FAQ accrodion begin */
+  $(document).on("click", ".faq_grid h3 a", function () {
+    var _this = $(this),
+    _this_article = _this.parents("article"),
+    _inner_height = _this_article.find(".faq_inner > div").height();
+    if (_this_article.hasClass("show_me")) {
+      _this_article.removeClass("show_me");
+      _this_article.find(".faq_inner").removeAttr("style");
+    } else {
+      _this_article.addClass("show_me");
+      _this_article.find(".faq_inner").css("height", _inner_height+"px");
+    }
+    return false;
+  });
+/* FAQ accrodion end */

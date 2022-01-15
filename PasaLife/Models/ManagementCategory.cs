@@ -14,5 +14,6 @@ namespace PasaLife.Models
         public bool IsDeactive { get; set; }
 
         public virtual ICollection<Management> Managements { get; set; }
+        public virtual ICollection<ManagementFaq> ManagementFaqs { get; set; }
     }
 }

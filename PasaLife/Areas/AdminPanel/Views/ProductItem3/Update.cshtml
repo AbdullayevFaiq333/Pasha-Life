@@ -1,0 +1,182 @@
+﻿@model ProductItem3
+<div class="content text-center">
+    <div class="col-lg-12" style="display: inline-block">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">@Model.AzTitle Düzəliş Et</h5>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                    Go Back
+                </a>
+            </div>
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 20%; margin-left: 35%">
+                <label class="btn btn-secondary active language" id="0header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Az
+                </label> 
+                <label class="btn btn-secondary language" id="1header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Ru
+                </label>
+                <label class="btn btn-secondary language" id="2header" style=" cursor: pointer">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> En
+                </label>
+            </div>
+
+            <div class="card-body">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form method="post" enctype="multipart/form-data" style="margin-left: 25%">
+
+                    <div class="form-group form-group-float" style="width: 50%">
+                        <label asp-for="Photo" style="display: block">Şəkil</label>
+                        <input type="file" asp-for="Photo" class="form-control" placeholder="Photo">
+                        <span class="text-danger" asp-validation-for="@Model.Image"></span>
+                    </div>
+
+
+                    <div class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.AzTitle">Azerbaycan dilində başlıq</label>
+                        <input asp-for="@Model.AzTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.RuTitle">Заголовок на русском языке</label>
+                        <input asp-for="@Model.RuTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group header-body form-group-float w-lg-50">
+                        <label asp-for="@Model.EnTitle">Title in English</label>
+                        <input asp-for="@Model.EnTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnTitle"></span>
+                    </div>
+
+                    <div class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.AzDescription">Azerbaycan dilində mətn</label>
+                        <textarea asp-for="@Model.AzDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.RuDescription">Текст на русском</label>
+                        <textarea asp-for="@Model.RuDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group language-body form-group-float w-lg-50">
+                        <label asp-for="@Model.EnDescription">Description in English</label>
+                        <textarea asp-for="@Model.EnDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnDescription"></span>
+                    </div>
+
+                    <div class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.AzDescription2">Əsas mətn</label>
+                        <textarea id="azdescs" asp-for="@Model.AzDescription2" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzDescription2"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.RuDescription2">Главный текст</label>
+                        <textarea id="rudescs" asp-for="@Model.RuDescription2" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuDescription2"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.EnDescription2">Main text</label>
+                        <textarea id="endescs" asp-for="@Model.EnDescription2" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnDescription2"></span>
+                    </div>
+
+                    <div class="form-group prinfo form-group-float w-lg-50">
+                        <label asp-for="@Model.AzInfo">Məlumat</label>
+                        <textarea id="azprinfo" asp-for="@Model.AzInfo" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzInfo"></span>
+                    </div>
+                    <div style="display:none" class="form-group prinfo form-group-float w-lg-50">
+                        <label asp-for="@Model.RuInfo">Информация</label>
+                        <textarea id="ruprinfo" asp-for="@Model.RuInfo" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuInfo"></span>
+                    </div>
+                    <div style="display:none" class="form-group prinfo form-group-float w-lg-50">
+                        <label asp-for="@Model.EnInfo">Information</label>
+                        <textarea id="enprinfo" asp-for="@Model.EnInfo" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnInfo"></span>
+                    </div>
+
+                    <div class="form-group secondtitle form-group-float w-lg-50">
+                        <label asp-for="@Model.AzSecondTitle">İkinci Başlıq</label>
+                        <input asp-for="@Model.AzSecondTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzSecondTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondtitle form-group-float w-lg-50">
+                        <label asp-for="@Model.RuSecondTitle">Второй Заголовок</label>
+                        <input asp-for="@Model.RuSecondTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuSecondTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondtitle form-group-float w-lg-50">
+                        <label asp-for="@Model.EnSecondTitle">Second Title</label>
+                        <input asp-for="@Model.EnSecondTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnSecondTitle"></span>
+                    </div>
+
+                    <div class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.AzSecondDescription">İkinci Mətn</label>
+                        <textarea id="azend" asp-for="@Model.AzSecondDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzSecondDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.RuSecondDescription">Второй Текст</label>
+                        <textarea id="ruend" asp-for="@Model.RuSecondDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuSecondDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group secondDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.EnSecondDescription">Second Description</label>
+                        <textarea id="enend" asp-for="@Model.EnSecondDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnSecondDescription"></span>
+                    </div>
+
+                    <div class="form-group thirdTitle form-group-float w-lg-50">
+                        <label asp-for="@Model.AzThirdTitle">Üçüncü Başlıq</label>
+                        <input asp-for="@Model.AzThirdTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.AzThirdTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group thirdTitle form-group-float w-lg-50">
+                        <label asp-for="@Model.RuThirdTitle">Третий Заголовок</label>
+                        <input asp-for="@Model.RuThirdTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.RuThirdTitle"></span>
+                    </div>
+                    <div style="display:none" class="form-group thirdTitle form-group-float w-lg-50">
+                        <label asp-for="@Model.EnThirdTitle">Third Title</label>
+                        <input asp-for="@Model.EnThirdTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.EnThirdTitle"></span>
+                    </div>
+
+                    <div class="form-group  form-group-float thirdDesc w-lg-50">
+                        <label asp-for="@Model.AzThirdDescription">Üçüncü Mətn</label>
+                        <textarea id="azbox" asp-for="@Model.AzThirdDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.AzThirdDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group  thirdDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.RuThirdDescription">Третий Заголовок</label>
+                        <textarea id="rubox" asp-for="@Model.RuThirdDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.RuThirdDescription"></span>
+                    </div>
+                    <div style="display:none" class="form-group  thirdDesc form-group-float w-lg-50">
+                        <label asp-for="@Model.EnThirdDescription">Third Description</label>
+                        <textarea id="enbox" asp-for="@Model.EnThirdDescription" class="form-control" style="height: 8em"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.EnThirdDescription"></span>
+                    </div>
+
+
+
+                    <button type="submit" class="btn bg-blue-800" style="margin-right: 50%">Düzəliş et<i class="icon-ml-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/productItem3.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/vendor/jquery/jcrop.js"></script>
+
+
+}
+
+

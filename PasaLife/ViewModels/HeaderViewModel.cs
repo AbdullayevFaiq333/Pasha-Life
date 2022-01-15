@@ -10,5 +10,10 @@ namespace PasaLife.ViewModels
     {
         public List<Navbar> Navbars { get; set; }
         public IconButton IconButton { get; set; }
+        public List<SecondMenu> SecondMenus { get; set; }
+        public List<Product> Products { get; set; }
+        public List<OnlineService> OnlineServices { get; set; }
+        public List<InformationCenter> InformationCenters { get; set; }
+
     }
 }

@@ -118,17 +118,174 @@
                     {
                         if (culture == "az")
                         {
-                            <li><a href="@(context.PathBase+item.URL)">@item.AzTitle</a></li>
+                            <li><a href="@(context.PathBase+item.URL)">@item.AzTitle</a>
+                                @if (item.Id==1)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var secondMenu in Model.SecondMenus)
+                                         {
+            			                      <li><a  asp-controller="@secondMenu.URL" asp-action="">@secondMenu.AzTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==2)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var product in Model.Products)
+                                         {
+            			                      <li><a  asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.AzTitle @product.AzTitle2</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
+                                else if (item.Id==3)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var onlineService in Model.OnlineServices)
+                                         {
+            			                      <li><a asp-controller="OnlineServices" asp-action="Detail" asp-route-id="@onlineService.Id">@onlineService.AzTitle</a></li>
+                                             
+                                         }
+            			                      <li><a asp-controller="OnlineServices" asp-action="OnlinePayment">Online ödəniş</a></li>
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==4)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var informationCenter in Model.InformationCenters)
+                                         {
+            			                      <li><a asp-controller="InformationCenter" asp-action="Detail" asp-route-id="@informationCenter.Id">@informationCenter.AzTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
 
+                            </li>
+                            
                         }
                         else if (culture == "en")
                         {
-                            <li><a href="@(context.PathBase+item.URL)">@item.EnTitle</a></li>
+                            <li><a href="@(context.PathBase+item.URL)">@item.EnTitle</a>
+                                @if (item.Id==1)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var secondMenu in Model.SecondMenus)
+                                         {
+            			                      <li><a  asp-controller="@secondMenu.URL" asp-action="">@secondMenu.EnTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==2)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var product in Model.Products)
+                                         {
+            			                      <li><a  asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.EnTitle @product.EnTitle2</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
+                                else if (item.Id==3)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var onlineService in Model.OnlineServices)
+                                         {
+            			                      <li><a asp-controller="OnlineServices" asp-action="Detail" asp-route-id="@onlineService.Id">@onlineService.EnTitle</a></li>
+                                             
+                                         }
+            			                      <li><a asp-controller="OnlineServices" asp-action="OnlinePayment">Online payment</a></li>
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==4)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var informationCenter in Model.InformationCenters)
+                                         {
+            			                      <li><a asp-controller="InformationCenter" asp-action="Detail" asp-route-id="@informationCenter.Id">@informationCenter.EnTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
+                            </li>
 
                         }
                         else if (culture == "ru")
                         {
-                            <li><a href="@(context.PathBase+item.URL)">@item.RuTitle</a></li>
+                            <li><a href="@(context.PathBase+item.URL)">@item.RuTitle</a>
+                                @if (item.Id==1)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var secondMenu in Model.SecondMenus)
+                                         {
+            			                      <li><a  asp-controller="@secondMenu.URL" asp-action="">@secondMenu.RuTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==2)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var product in Model.Products)
+                                         {
+            			                      <li><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.RuTitle @product.RuTitle2</a></li>
+            			                      
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
+                                else if (item.Id==3)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var onlineService in Model.OnlineServices)
+                                         {
+            			                      <li><a asp-controller="OnlineServices" asp-action="Detail" asp-route-id="@onlineService.Id">@onlineService.RuTitle</a></li>
+                                             
+                                         }
+            			                      <li><a asp-controller="OnlineServices" asp-action="OnlinePayment">Онлайн платеж</a></li>
+            			                 
+            		                   </ul>
+                                    </div>
+                                }else if (item.Id==4)
+                                {
+                                    <div class="submenu">
+            		                  <ul>
+                                          @foreach (var informationCenter in Model.InformationCenters)
+                                         {
+            			                      <li><a asp-controller="InformationCenter" asp-action="Detail" asp-route-id="@informationCenter.Id">@informationCenter.RuTitle</a></li>
+                                             
+                                         }
+            			                 
+            		                   </ul>
+                                    </div>
+                                }
+                            </li>
 
                         }
                     }

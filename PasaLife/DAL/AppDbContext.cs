@@ -55,6 +55,12 @@ namespace PasaLife.DAL
         public DbSet<VacancyDetail> VacancyDetails { get; set; }
         public DbSet<AwardSeo> AwardSeos { get; set; }
         public DbSet<HomeCarouselSeo> HomeCarouselSeos{ get; set; }
+        public DbSet<ProductItem1> ProductItem1s{ get; set; }
+        public DbSet<ProductItem2> ProductItem2s{ get; set; }
+        public DbSet<ProductItem3> ProductItem3s{ get; set; }
+        public DbSet<ProductItem4> ProductItem4s{ get; set; }
+        public DbSet<ProductItem5> ProductItem5s{ get; set; }
+        public DbSet<ManagementFaq> ManagementFaqs{ get; set; }
       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,7 +94,8 @@ namespace PasaLife.DAL
                                                      new Footer { Id = 1, AzTitle = "infobank.az", EnTitle = "infobank.az", RuTitle = "infobank.az", URL = "https://infobank.az/" });
             modelBuilder.Entity<ManagementCategory>().HasData(
                                                      new ManagementCategory { Id = 1, AzName = "Idarə Heyəti", EnName = "Board of Directors", RuName = "Совет директоров1", },
-                                                     new ManagementCategory { Id = 2, AzName = "Direktorlar Şurası", EnName = "Counsel of Directors", RuName = "Совет директоров2", }
+                                                     new ManagementCategory { Id = 2, AzName = "Direktorlar Şurası", EnName = "Counsel of Directors", RuName = "Совет директоров2", },
+                                                     new ManagementCategory { Id = 3, AzName = "Digər komitələr", EnName = "Other committees", RuName = "Другие комитеты", }
                                                      );
             modelBuilder.Entity<AboutCompany>().HasData(
                                                      new AboutCompany

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj": {}
+    "C:\\Code.A\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj": {
+    "C:\\Code.A\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj",
+        "projectUniqueName": "C:\\Code.A\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj",
         "projectName": "PasaLife",
-        "projectPath": "C:\\Users\\HP\\Desktop\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj",
+        "projectPath": "C:\\Code.A\\PASHA-LIFE\\Pasha-Life\\PasaLife\\PasaLife.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\PASHA-LIFE\\Pasha-Life\\PasaLife\\obj\\",
+        "outputPath": "C:\\Code.A\\PASHA-LIFE\\Pasha-Life\\PasaLife\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

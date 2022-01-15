@@ -55,7 +55,7 @@ namespace PasaLife.Areas.AdminPanel.Controllers
             if (!ModelState.IsValid)
             {
                 return View();
-            }
+            } 
             if (proId!=null)
                 fAQ.ProductId = proId;
             if (infId != null)

@@ -1,0 +1,139 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    ProductItem4 productItem4s = Model;
+}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mt-0 header-title">Product Item 4 ətraflı</h2>
+            <a asp-action="Index" class="btn btn-secondary" style="margin-top: 5px; justify-content:end">
+                Go Back
+            </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Başlıq </th>
+                            <td>
+                                @productItem4s.AzTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mətn</th>
+                            <td>
+                                @Html.Raw(productItem4s.AzDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Заголовок</th>
+                            <td>
+                                @productItem4s.RuTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Текст</th>
+                            <td>
+                                @Html.Raw(productItem4s.RuDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Title</th>
+                            <td>
+                                @productItem4s.EnTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>
+                                @Html.Raw(productItem4s.EnDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Məlumat</th>
+                            <td>
+                                @Html.Raw(productItem4s.AzInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Информация</th>
+                            <td>
+                                @Html.Raw(productItem4s.RuInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">İnformation</th>
+                            <td>
+                                @Html.Raw(productItem4s.EnInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Qutudakı mətn</th>
+                            <td>
+                                @Html.Raw(productItem4s.AzDescriptionBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tекст в поле</th>
+                            <td>
+                                @Html.Raw(productItem4s.RuDescriptionBox)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Text in the box</th>
+                            <td>
+                                @Html.Raw(productItem4s.EnDescriptionBox)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Telefon Nömrəsi</th>
+                            <td>
+                                @productItem4s.Phone
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th scope="row">Əlaqə haqqında</th>
+                            <td>
+                                @Html.Raw(productItem4s.AzPhoneInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">О контакте</th>
+                            <td>
+                                @Html.Raw(productItem4s.RuPhoneInfo)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">About contact</th>
+                            <td>
+                                @Html.Raw(productItem4s.EnPhoneInfo)
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <th scope="row">Şəkil</th>
+                            <td>
+                                <img style="width:100px;height:100px;object-fit:cover;border-radius:50%" src="~/images/@productItem4s.Image" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+

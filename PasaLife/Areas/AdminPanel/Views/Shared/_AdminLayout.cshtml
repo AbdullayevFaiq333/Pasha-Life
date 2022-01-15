@@ -212,8 +212,10 @@
                                     <a href="#" class="nav-link"><span style="color: #000000"><i></i>- İdarə heyəti</span></a>
 
                                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a asp-controller="ManagementCategory" asp-action="Index" class="nav-link "><span style="color: #000000">İdarə heyəti kateqoriyaları</span>   </a></li>
+                                        <li class="nav-item"><a asp-controller="ManagementCategory" asp-action="Index" class="nav-link "><span style="color: #000000">İdarə heyəti kateqoriyaları</span></a></li>
                                         <li class="nav-item"><a asp-controller="Management" asp-action="Index" class="nav-link"><span style="color: #000000">İdarə heyəti (Siyahı)</span> </a></li>
+                                        <li class="nav-item"><a asp-controller="ManagementFaq" asp-action="Index" class="nav-link "><span style="color: #000000">Digər komitələr</span></a></li>
+
                                         <li class="my-hr"></li>
 
                                     </ul>
@@ -305,7 +307,7 @@
             color: black;
         }
     </style>
-
+     
     <!-- /page content -->
     @RenderSection("Scripts", false)
     <style>
@@ -316,7 +318,7 @@
     ClassicEditor
         .create( document.querySelector( '#AzDescription' ) )
         .catch( error => {
-            console.error( error );
+            console.error( error ); 
         } );
 
     ClassicEditor
@@ -471,6 +473,102 @@
                 console.error(error);
             });
 
+        ClassicEditor
+            .create(document.querySelector('#azend'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ruend'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#enend'))
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#azbox'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#rubox'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#enbox'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#azdescs'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#rudescs'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#endescs'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#azprinfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ruprinfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#enprinfo'))
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#azinfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ruinfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#eninfo'))
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#azphoneInfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ruphoneInfo'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#enphoneInfo'))
+            .catch(error => {
+                console.error(error);
+            });
+
+
+        
 </script>
 
 </body>

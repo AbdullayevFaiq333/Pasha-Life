@@ -20,13 +20,22 @@ namespace PasaLife.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var navbars = await _dbContext.Navbars.ToListAsync();
+            var navbars = await _dbContext.Navbars.Where(x => x.IsDeactive == false).ToListAsync();
             var iconButton = await _dbContext.IconButtons.FirstOrDefaultAsync();
+            var secondMenus = await _dbContext.SecondMenus.Where(x => x.IsDeactive == false).ToListAsync();
+            var products = await _dbContext.Products.Where(x=>x.IsDeactive==false).ToListAsync();
+            var onlineServices = await _dbContext.OnlineServices.Where(x => x.IsDeactive == false).ToListAsync();
+            var informationCenters = await _dbContext.InformationCenters.Where(x => x.IsDeactive == false).ToListAsync();
+
 
             HeaderViewModel headerViewModel = new HeaderViewModel
             {
                 Navbars = navbars,
                 IconButton=iconButton,
+                SecondMenus = secondMenus,
+                Products = products,
+                OnlineServices = onlineServices,
+                InformationCenters = informationCenters,
             };
             return View(headerViewModel);
         }

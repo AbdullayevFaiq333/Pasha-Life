@@ -2,7 +2,19 @@
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
 
-    ViewData["Title"] = "Məhsullar";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Mehsullar";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Products";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Продукты";
+        }
 }
 
 <div class="modal" data-modal="calulator">
@@ -331,7 +343,9 @@
         }
         }
 
-@await Component.InvokeAsync("Footer")
+<footer>
+        @await Component.InvokeAsync("Footer")
+       </footer>
 
 
 

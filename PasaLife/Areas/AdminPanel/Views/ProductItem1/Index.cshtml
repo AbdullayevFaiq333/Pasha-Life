@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "İndex";
+    List<ProductItem1> productItem1s = Model;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Product Item 1</h4>
+                <a asp-action="Create" class="btn btn-primary">Yenisini yarat</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Şəkli</th>
+
+                                <th>Ad</th>
+
+                                <th>Vəzifə</th>
+                                
+
+                                <th>Başlıq</th>
+                                
+
+                                
+
+                                <th class="text-right pr-3">Əməliyyatlar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in productItem1s)
+                            {
+                                <tr>
+                                    <td>
+                                        <img style="width:70px;height:70px;object-fit:cover;border-radius:50%" src="~/images/@item.Image" />
+                                    </td>
+
+                                    <td>
+                                        @item.Name
+                                    </td>
+
+
+                                    <td>
+                                        @item.AzWork
+                                    </td>
+
+                                   
+
+                                    <td>
+                                        @item.AzTitle
+                                    </td>
+                                  
+
+
+                                   
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+

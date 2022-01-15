@@ -1,8 +1,21 @@
 ﻿
 @{
-    ViewData["Title"] = "Rəhbərlik";
+    
     List<ManagementCategory> managementCategories = Model;
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+     @if (culture == "az")
+        {
+                ViewData["Title"] = "Rəhbərlik";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Leadership";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Лидерство";
+        }
 
 }
 
@@ -86,6 +99,7 @@
                 </div>
 
 
+
             }
             else if (culture == "en")
             {
@@ -99,8 +113,8 @@
                                 @foreach (Management item in managementCategory.Managements)
                                 {
                                     <div class="person_item">
-                                        <a asp-controller="Management" asp-action="Detail" class="person_content">
-                                            <div class="person_image" style="background-image:url(images/@item.Image);"></div>
+                                        <a asp-controller="Management" asp-action="Detail" asp-route-id="@item.Id" class="person_content">
+                                            <div class="person_image" style="background-image:url(images/persons/@item.Image);"></div>
                                             <div class="person_desc">
 
                                                 <strong>@item.EnFullName</strong>
@@ -114,6 +128,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
             }
@@ -129,8 +144,8 @@
                                 @foreach (Management item in managementCategory.Managements)
                                 {
                                     <div class="person_item">
-                                        <a asp-controller="Management" asp-action="Detail" class="person_content">
-                                            <div class="person_image" style="background-image:url(images/@item.Image);"></div>
+                                        <a asp-controller="Management" asp-action="Detail" asp-route-id="@item.Id" class="person_content">
+                                            <div class="person_image" style="background-image:url(images/persons/@item.Image);"></div>
                                             <div class="person_desc">
 
                                                 <strong>@item.RuFullName</strong>
@@ -148,12 +163,67 @@
 
             }
         }
+        <div class="reports_item" data-anchor="man-3">
+				<div class="faq_grid">
+                    @foreach (ManagementCategory managementCategory in Model)
+                   {
+                       foreach (ManagementFaq managementFaq in managementCategory.ManagementFaqs)
+                       {
+                           @if (culture == "az")
+                           {
+                               <article class="faq_box">
+						           <h3>
+							           <a href="#"><span>@managementFaq.AzTitle</span><em></em></a>
+						           </h3>
+						           <div class="faq_inner">
+							           <div>
+								           @Html.Raw(managementFaq.AzDescription)
+                                       </div>
+						           </div>
+					           </article>
 
+                           }
+                           else if (culture == "en")
+                           {
+                               <article class="faq_box">
+						           <h3>
+							           <a href="#"><span>@managementFaq.EnTitle</span><em></em></a>
+						           </h3>
+						           <div class="faq_inner">
+							           <div>
+								           @Html.Raw(managementFaq.EnDescription)
+                                       </div>
+						           </div>
+					           </article>
+                           }
+                           else if (culture == "ru")
+                           {
+                               <article class="faq_box">
+						           <h3>
+							           <a href="#"><span>@managementFaq.RuTitle</span><em></em></a>
+						           </h3>
+						           <div class="faq_inner">
+							           <div>
+								           @Html.Raw(managementFaq.RuDescription)
+                                       </div>
+						           </div>
+					           </article>
+            
+                           }
+                       }
+                   }
+					
+
+                    
+				</div>
+			</div>
 
 
     </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

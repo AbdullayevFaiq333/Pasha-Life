@@ -2,7 +2,19 @@
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
 
-    ViewData["Title"] = "Struktur";
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Struktur";
+
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Structure";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Структура";
+        }
 }
 
 <div class="page_content total_page">
@@ -32,7 +44,9 @@
         </div>
     </div>
 
+        <footer>
         @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 

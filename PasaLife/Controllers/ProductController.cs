@@ -34,6 +34,8 @@ namespace PasaLife.Controllers
                 .Include(x => x.Customers).Include(x => x.Partners)
                 .Include(x => x.ProductCharts).Include(x => x.ProductDetailTitle)
                 .Include(x => x.ProductInformation).Include(x => x.SimpleProduct).Include(x=>x.ProductWords)
+                .Include(x=>x.ProductItem1).Include(x => x.ProductItem2).Include(x=>x.ProductItem3)
+                .Include(x=>x.ProductItem4).Include(x => x.ProductItem5)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             ViewBag.AzSeoTitle = product.AzSeoTitle;
@@ -100,7 +102,11 @@ namespace PasaLife.Controllers
             ViewBag.nextRuName = nextRuName;
             ViewBag.nextEnName = nextEnName;
 
-
+            var productt=await _db.Products.Where(x => x.IsDeactive == false).FirstOrDefaultAsync();
+            ViewBag.firstId = productt.Id;
+            ViewBag.firstAzName = productt.AzTitle+" "+productt.AzTitle2;
+            ViewBag.firstRuName = productt.RuTitle+" "+productt.RuTitle2;
+            ViewBag.firstEnName = productt.EnTitle+" "+productt.EnTitle2;
 
 
             return View(product);

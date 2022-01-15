@@ -1,8 +1,19 @@
 ﻿@model List<Award>
 @{
     var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    @if (culture == "az")
+        {
+                ViewData["Title"] = "Mükafatlar";
 
-    ViewData["Title"] = "Mükafatlar";
+        }
+        else if (culture == "en")
+        {
+                ViewData["Title"] = "Awards";
+        }
+        else if (culture == "ru")
+        {
+                ViewData["Title"] = "Награды";
+        }
 }
 
 <div class="page_content total_page">
@@ -71,7 +82,9 @@
 
     </div>
 
-    @await Component.InvokeAsync("Footer")
+    <footer>
+        @await Component.InvokeAsync("Footer")
+       </footer>
 
 </div>
 
